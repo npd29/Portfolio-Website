@@ -11,26 +11,40 @@ include 'top.php';
 
     </figure>
     <div class="content gradient">
-        <h2>## ABOUT</h2>
-        <p>// I am a
-            with a strong programming background and a passion for creating . As a Computer Science & Information Systems student at the University of Vermont</p>
+        <h2>ABOUT</h2>
+        <div class="about">
+            <p>// I am a
+                with a strong programming background and a passion for writing clean, efficient code. As a Computer Science & Information Systems student at the University of Vermont</p>
+            <div class="imageDiv">
+                <img src="images/npd2.jpg">
+                <p>Me writing some really impressive code (probably)</p>
+            </div>
 
+        </div>
+        
     </div>
     <div class="content">
         <h2>PROJECTS</h2>
         <div class="projects"><?php
-            $sql="SELECT fldName, fldDescription, fldLanguages, fldTools, fldDate, fldLink FROM tblProjects";
+            $sql="SELECT fldName, fldDescription, fldLanguages, fldTools, fldDate, fldCodeLink, fldFinishedLink FROM tblProjects";
             $projects = $thisDBReader->select($sql);
         foreach ($projects as $project){
-            print '<a href="'.$project['fldLink'].'"><div class="project"><h3>'.$project['fldName'].'</h3><div class="languages">';
+            print '<div class="project"><h3>'.$project['fldName'].'</h3><div class="languages">';
             $languages = explode (",", $project['fldLanguages']);
             foreach ($languages as $language){
                 print '<p class="language" id="'.$language.'">'. $language. '</p>';
             }
 
-            print'</div><p>'.$project['fldDescription'].'</p></div></a>';
-//                print '<li><h3>$project['fldName']</h3><p>$project['fldDescription']</p></li>';
+            print'</div><p>'.$project['fldDescription'].'</p><div class="projectLinks">';
+            if (!is_null($project['fldCodeLink'])){
+                print '<a class="projectLink" href="'.$project['fldCodeLink'].'">View Code</a>';
             }
+            if (!is_null($project['fldFinishedLink'])){
+                print '<a class="projectLink" href="'.$project['fldFinishedLink'].'">View Project</a>';
+            }
+            print '</div></div>';
+
+        }
 
 
             ?>

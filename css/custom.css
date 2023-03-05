@@ -23,14 +23,25 @@
     font-weight: normal;
 }
 :root {
-    --purple: #20123a;
-    --brightblue: #26A0F7;
-    --red: #EE6352;
-    --green: #5BC0BE;
+    --purple: rgb(100, 28,255);
+    --ltblue: hsla(197, 100%, 63%, 1);
+    --red: #FF2F00;
+    --green: #59d102;
+    --pink: hsla(294, 100%, 55%, 1);
+    --teal: rgb(0, 255,150);
+    --dkpink: rgb(203, 28,255);
+    --orange: #FF9D00;
+
 }
 body{
     background-color: #1A1A1A;
     margin: 0;
+}
+h2{
+    font-size: 10em;
+    position: absolute;
+    opacity: 20%;
+    margin-top: 0;
 }
 .overlay{
     rotate: 60deg;
@@ -53,6 +64,8 @@ body{
     font-family: "JetBrains Mono";
     margin: auto;
     font-size: 1.25em;
+    position: relative;
+    opacity: 100%;
 }
 .name h1{
     letter-spacing: .5em;
@@ -72,11 +85,12 @@ h1{
 #homeDisplay{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 95vh;
 }
 .content{
     padding: 10vh 5vw;
 }
+
 .gradient{
     background: linear-gradient(90deg, hsla(197, 100%, 63%, 1) 0%, hsla(294, 100%, 55%, 1) 100%);
 }
@@ -91,16 +105,35 @@ footer{
 footer p{
     margin: auto;
 }
+.about{
+    display: flex;
+    margin-top: 10em;
+}
+.imageDiv img{
+    width: 30vw;
+    border-radius: 1em;
+}
+
+.imageDiv{
+    display: flex;
+    flex-direction: column;
+}
+.imageDiv p{
+    text-align: center;
+    font-size: small;
+    margin: auto;
+    margin-top: 1em;
+}
+.about p{
+    margin-right: 2em;
+}
 .projects{
+    margin-top: 10em;
     display: flex;
     flex-wrap: wrap;
 
 }
 .project{
-    height: 100%;
-}
-
-.projects a{
     width: max(25vw, 20em);
     text-decoration: none;
     margin: 1em auto;
@@ -108,9 +141,19 @@ footer p{
     outline: white solid 3px;
     border-radius: 1em;
     transition: width .25s ease-out;
+    display: flex;
+    flex-direction: column;
 }
-.projects a:hover{
+.projectLink{
+    margin: auto;
+    text-decoration: none;
+    border-radius: .5em;
+    padding: .5em 1em;
+    width: 80%;
+    background: hsla(197, 100%, 63%, 1);
+    text-align: center;
 }
+
 .project h3{
     text-transform: uppercase;
 }
@@ -119,19 +162,32 @@ footer p{
     padding: .5em 1em;
     width: min-content;
     margin: .1em;
-    background: linear-gradient(90deg, rgb(0, 200,255), rgb(100, 28,255));
-
+    background: var(--teal);
+    color: white;
+    font-family: Mont;
+    font-weight: bold;
+    font-size: small;
 }
 .languages{
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 1em;
 }
 #Python{
-    background: linear-gradient(90deg, rgb(64, 245,220), rgb(64, 201,255));
+    background: var(--green);
 }
 #Swift{
-    background: linear-gradient(90deg, rgb(203, 28,255), rgb(232, 28,255));
+    background: var(--pink);
 }
 #PHP{
-    background: linear-gradient(90deg, rgb(0, 255,235), rgb(0, 255,150));
+    background: var(--purple);
+}
+#HTML{
+    background: var(--orange);
+}
+#JavaScript{
+    background: var(--red);
+}
+#CSS{
+    background: var(--ltblue);
 }
