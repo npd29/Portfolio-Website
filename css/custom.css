@@ -1,46 +1,43 @@
-* {font-family: Mont, sans-serif;
+* {font-family: "Integral CF", sans-serif;
     max-width: 100vw;
     color: white;
 }
 @font-face {
-    font-family: Mont;
-    src: url(../fonts/Mont-HeavyDEMO.otf);
-    font-weight: bold;
+    font-family: "Integral CF";
+    src: url(../fonts/integral/IntegralCF-Regular.woff);
+    font-weight: normal;
 }
 @font-face {
-    font-family: Mont;
-    src: url(../fonts/Mont-ExtraLightDEMO.otf);
-    font-weight: normal;
+    font-family: integral-regular;
+    src: url(../fonts/integral/IntegralCF-Bold.woff);
+    font-weight: bold;
 }
 @font-face {
     font-family: JetBrains Mono;
     src: url(../fonts/JetBrainsMono-Regular.woff2);
     font-weight: normal;
 }
-@font-face {
-    font-family: Hack;
-    src: url(../fonts/Hack-Regular.ttf);
-    font-weight: normal;
-}
+
 :root {
-    --purple: rgb(100, 28,255);
-    --ltblue: hsla(197, 100%, 63%, 1);
-    --red: #FF2F00;
-    --green: #59d102;
-    --pink: hsla(294, 100%, 55%, 1);
+    --purple: #9900ff;
+    --ltblue: #00ffff;
+    --red: #FF0000;
+    --green: #00ff00;
+    --pink: #ff00ff;
     --teal: rgb(0, 255,150);
-    --dkpink: rgb(203, 28,255);
-    --orange: #FF9D00;
+    --yellow: #ffff00;
+    --blue: #0000ff;
+    --grey: #1A1A1A
 
 }
 body{
-    background-color: #1A1A1A;
+    background-color: var(--grey);
     margin: 0;
 }
 h2{
-    font-size: 10em;
+    font-size: 10vw;
     position: absolute;
-    opacity: 20%;
+    opacity: 25%;
     margin-top: 0;
 }
 .overlay{
@@ -66,17 +63,21 @@ h2{
     font-size: 1.25em;
     position: relative;
     opacity: 100%;
+    text-align: center;
 }
 .name h1{
     letter-spacing: .5em;
     margin: auto;
-    font-size: 3em;
+    font-size: 3vw;
+}
+.name br{
+    display: none;
 }
 p{
     font-family: "JetBrains Mono";
 }
 h1{
-    font-family: Mont, sans-serif;
+    font-family: "Integral CF", sans-serif;
 }
 .logo{
     height: 30vh;
@@ -87,12 +88,68 @@ h1{
     flex-direction: column;
     height: 95vh;
 }
+
+body {
+    background: #222;
+}
+
+.arrow {
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: 50% 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+
+.arrow-one {
+    animation: arrow-movement 2s ease-in-out infinite;
+}
+.arrow-two {
+    animation: arrow-movement 2s 1s ease-in-out infinite;
+}
+
+.arrow:before,
+.arrow:after {
+    background: #fff;
+    content: '';
+    display: block;
+    height: 3px;
+    position: absolute;
+    top: 40vh;
+    left: 0;
+    width: 30px;
+}
+
+.arrow:before {
+    transform: rotate(45deg) translateX(-23%);
+    transform-origin: top left;
+}
+
+.arrow:after {
+    transform: rotate(-45deg) translateX(23%);
+    transform-origin: top right;
+}
+
+@keyframes arrow-movement {
+    0% {
+        opacity: 0;
+        top: 45%;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 .content{
     padding: 10vh 5vw;
 }
 
 .gradient{
-    background: linear-gradient(90deg, hsla(197, 100%, 63%, 1) 0%, hsla(294, 100%, 55%, 1) 100%);
+    background: linear-gradient(90deg, var(--ltblue) 0%, var(--pink) 100%);
 }
 
 footer{
@@ -107,7 +164,9 @@ footer p{
 }
 .about{
     display: flex;
-    margin-top: 10em;
+    margin-top: 10vw;
+}
+.about p{
 }
 .imageDiv img{
     width: 30vw;
@@ -136,37 +195,68 @@ footer p{
 .project{
     width: max(25vw, 20em);
     text-decoration: none;
-    margin: 1em auto;
-    padding: 1em;
-    outline: white solid 3px;
-    border-radius: 1em;
-    transition: width .25s ease-out;
+    margin: 1em;
+    border: white solid 3px;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    height: auto;
+    transition: all .25s ease;
+    position: relative;
+    overflow: hidden;
+    padding: 1em 2em;
 }
+
 .projectLink{
-    margin: auto;
     text-decoration: none;
     border-radius: .5em;
     padding: .5em 1em;
     width: 80%;
-    background: hsla(197, 100%, 63%, 1);
     text-align: center;
+    margin: 1em auto auto;
 }
+
+
 
 .project h3{
     text-transform: uppercase;
+    font-size: 2em;
+    transition: all .5s ease;
+}
+.projectLink{
+    opacity: 50%;
+    transition: all .5s ease;
+}
+@media (min-width: 800px) {
+
+
+    .projectLink:hover {
+        opacity: 100%;
+    }
+
+    .project:hover h3 {
+        font-size: 1.5em;
+    }
+
+    .project:hover .language {
+        padding: .25em .5em;
+    }
+}
+.tools{
+    font-family: "Integral CF",sans-serif;
+    font-size: small;
+    margin-top: 0;
 }
 .language{
-    border-radius: .5em;
+    border-radius: 2em;
     padding: .5em 1em;
     width: min-content;
     margin: .1em;
     background: var(--teal);
-    color: white;
-    font-family: Mont;
-    font-weight: bold;
+    color: var(--grey);
+    font-family: "Integral CF";
     font-size: small;
+    transition: all .5s ease;
 }
 .languages{
     display: flex;
@@ -183,7 +273,7 @@ footer p{
     background: var(--purple);
 }
 #HTML{
-    background: var(--orange);
+    background: var(--yellow);
 }
 #JavaScript{
     background: var(--red);
