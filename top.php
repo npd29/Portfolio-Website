@@ -15,13 +15,21 @@
         <link rel="stylesheet" media="(max-width: 600px)" href="css/custom-phone.css?version=<?php print time(); ?>" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
         <script src="rules.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
     </head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTNH7G6WQW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-GTNH7G6WQW');
+    </script>
 <?php
 session_start();
 include 'lib/constants.php';
 
-print '<body class="'.PATH_PARTS['filename'].'">';
-print '<!-- ################# Body Element ################# --!>' . PHP_EOL;
 
 require_once (LIB_PATH . 'DataBase.php');
 $thisDBReader = new DataBase('ndesmara_reader', DATABASE_NAME);
@@ -34,5 +42,12 @@ print '<!-- ################# Body Element ################# --!>' . PHP_EOL;
 print PHP_EOL;
 //include 'nav.php';
 include 'connect-DB.php';
+if(isset($_GET['id'])){
+    $id=$_GET['id'];
+    $thisDBWriter->insert("INSERT INTO tblVisits SET fldCompany=?", array($id));
+}else{
+    $thisDBWriter->insert("INSERT INTO tblVisits SET fldCompany=?", array('NULL'));
+
+}
 print PHP_EOL;
 ?>
