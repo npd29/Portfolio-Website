@@ -96,6 +96,11 @@ include 'top.php';
             ?>
         </div>
     </div>
+    <div class="content">
+        <h2>CONTACT</h2>
+
+    </div>
+
 
     <div class="overlay"></div>
 
@@ -106,17 +111,101 @@ include 'top.php';
 
 </main>
 </body>
-
 <script>
+    console.log("START");
+
+    let projects = document.querySelector('.projects');
+    let clonesWidth;
+    let sliderWidth;
+    let clones = [];
+    let disableScroll = false;
+    let scrollPos;
+    var index = 0;
+    let items = [...document.querySelectorAll('.project')];
+
+    let projectWidth = items[0].offsetWidth + parseFloat(getComputedStyle(items[0]).marginLeft)+ parseFloat(getComputedStyle(items[0]).marginRight)
+
+
+    items.forEach(item =>{
+        let clone = item.cloneNode(true);
+        clone.classList.add('clone');
+        projects.appendChild(clone);
+        clones.push(clone);
+    })
+
+    function getClonesWidth(){
+        console.log("Getting width");
+
+        let width = 0;
+        clones.forEach(clone =>{
+            width += clone.offsetWidth + parseFloat(getComputedStyle(clone).marginLeft)+ parseFloat(getComputedStyle(clone).marginRight);
+        })
+        return width;
+    }
+
+    function getScrollPos(){
+        console.log(projects.scrollX.toString());
+        return projects.scrollX;
+    }
+
+    function setScrollPos(pos){
+        console.log("setting pos to");
+        console.log(pos);
+
+
+        projects.scrollTo({left:pos})
+    }
+
+    function scrollUpdate(){
+        if(projects.scrollLeft >= clonesWidth){
+            projects.scrollLeft = 0;
+        }
+        else if(projects.scrollLeft <= 0){
+            projects.scrollLeft = clonesWidth;
+
+        }
+        index = (index+1)%items.length;
+
+        // projects.style.transform = `translateX(${-projects.scrollLeft}px)`;
+
+        requestAnimationFrame(scrollUpdate);
+    }
+    function onLoad(){
+
+        calculateDimensions()
+        // projects.style.width = `${sliderWidth}px`;
+        projects.scrollTo({left:0});
+        scrollUpdate();
+    }
+    function calculateDimensions(){
+
+        sliderWidth = projects.getBoundingClientRect().width;
+        clonesWidth = getClonesWidth();
+    }
+
+    onLoad();
+    function scrollByOneItem() {
+        if (!projects.matches(':hover')) {
+            // projects.scrollLeft += projectWidth;
+            projects.scrollTo({
+                left: index * projectWidth,
+                behavior: "smooth"
+            })
+        }
+    }
+    setInterval(scrollByOneItem, 5000);
+
+
+
     document.addEventListener('DOMContentLoaded', function() {
-        var projects = document.querySelectorAll('.project');
+        var projectsArray = document.querySelectorAll('.project');
         var popup = document.querySelector('.popup');
         var popupContent = document.querySelector('.popup-content');
         var popupClose = document.querySelector('.popup-close');
         var projectSection = document.querySelector('.project-section');
 
 
-        projects.forEach(function(link) {
+        projectsArray.forEach(function(link) {
             link.addEventListener('click', function(event) {
                 event.preventDefault();
                 var project = this.closest('.project');

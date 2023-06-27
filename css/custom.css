@@ -213,11 +213,17 @@ body {
 .project-section.show-popup::after {
     display: block;
 }
+
 .projects {
-    margin-top: 10em;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    grid-gap: 2em;
+    margin-top: 5em;
+    padding-top: 5em;
+    display: flex;
+    overflow: scroll;
+    /*scroll-behavior: smooth;*/
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+
 }
 
 .project {
@@ -229,6 +235,15 @@ body {
     transition: all 0.5s ease;
     cursor: pointer;
     position: relative;
+    width: 25em;
+    margin: .5em;
+    min-width: 20em;
+    scroll-snap-align: start;
+
+
+}
+.projects::-webkit-scrollbar {
+    display: none;
 }
 
 .project .descriptionDiv {
@@ -240,7 +255,7 @@ body {
 .project:hover {
     background: #444;
     transform: translateY(-1em);
-    transition: all 1s ease;
+    transition: all .75s ease;
 }
 
 .project h3 {
@@ -325,12 +340,15 @@ body {
 @media screen and (max-width: 800px) {
     .projects {
         margin-top: 5em;
+        display: grid;
         grid-template-columns: 1fr;
         grid-gap: 1em;
     }
 
     .project {
         padding: 1em;
+        min-width: 0;
+        width: auto;
     }
     .project .descriptionDiv {
         max-height: none;
@@ -378,8 +396,17 @@ body {
     max-height: 40vh;
     overflow-y: scroll;
     scrollbar-width: thin;
+    scrollbar-color: rgba(150, 150, 150);
 }
 
+.popup-content .description::-webkit-scrollbar {
+    width: 8px;
+}
+
+.popup-content .description::-webkit-scrollbar-thumb {
+    background-color: rgba(150, 150, 150);
+    border-radius: 4px;
+}
 .popup-content .description::-webkit-scrollbar {
     width: 8px;
 }
