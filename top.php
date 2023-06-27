@@ -7,6 +7,7 @@
         <meta name="author" content="Noel Desmarais">
         <meta name="description" content="Noel Desmarais' Personal Website">
         <link rel="icon" type="image/png" href="images/favicon.png">
+        <link rel="mask-icon" type="image/png" href="images/favicon.png">
         <link rel="icon" type="image/png" href="images/favicon32.png">
         <link rel="icon" type="image/png" href="images/favicon128.png">
         <link rel="icon" type="image/png" href="images/favicon180.png">

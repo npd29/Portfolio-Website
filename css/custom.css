@@ -373,6 +373,13 @@ body {
     .popup-close {
         font-size: 1em;
     }
+    .contact-links{
+        flex-direction: column;
+        margin: auto;
+    }
+    .contact-links a{
+        margin: 1em auto !important;
+    }
 
 }
 .popup.show {
@@ -423,4 +430,45 @@ body {
     font-size: 1.5em;
     color: rgba(150, 150, 150);
     cursor: pointer;
+}
+
+.project-section>p{
+    font-family: "JetBrains Italic";
+    font-size: smaller;
+    opacity: 50%;
+    margin-left: 5em;
+}
+
+
+.contact h3{
+    margin-top: 10em;
+}
+.contact-links{
+    display: flex;
+    margin: 5em 0;
+}
+.contact-links a{
+    margin: auto;
+    transition: background 0.5s ease;
+}
+.contact-links a:hover{
+    transform: translateY(-.25em);
+}
+.contact-links a img{
+    margin: auto;
+    width: 5em;
+    height: 5em;
+}
+
+.resume{
+    font-size: larger;
+    text-decoration: none;
+    background: white;
+    color: var(--grey);
+    border-radius: 5px;
+    padding: 0.5em 2em;
+}
+
+.resume:hover {
+    background: var(--teal);
 }

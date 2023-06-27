@@ -42,7 +42,7 @@ include 'top.php';
                 <br>
                 While actively maintaining two jobs and juggling my college commitments, I have remained driven and focused.
                 I am now eager to leverage my diverse experiences and recent degree and embark on a rewarding career in the
-                Software Engineering field. For a detailed overview of my projects, please continue reading below."
+                Software Engineering field. For a detailed overview of my projects, please continue reading below.
                 <br>
                 */
             </p>
@@ -95,10 +95,20 @@ include 'top.php';
 
             ?>
         </div>
+        <p>Click on a project to expand</p>
     </div>
-    <div class="content">
+    <div class="content contact">
         <h2>CONTACT</h2>
-
+        <h3>Feel free to reach out on LinkedIn or email me.</h3>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/noeldesmarais/">
+                <img src="images/linkedin-logo.png" alt="LinkedIn.com">
+            </a>
+            <a href="https://github.com/npd29">
+                <img src="images/github-logo.png" alt="Github.com">
+            </a>
+            <a class="resume" href="resume3.19.pdf" target="_blank">View Resume</a>
+        </div>
     </div>
 
 
@@ -112,48 +122,24 @@ include 'top.php';
 </main>
 </body>
 <script>
-    console.log("START");
 
     let projects = document.querySelector('.projects');
     let clonesWidth;
     let sliderWidth;
     let clones = [];
     let disableScroll = false;
-    let scrollPos;
     var index = 0;
     let items = [...document.querySelectorAll('.project')];
-
     let projectWidth = items[0].offsetWidth + parseFloat(getComputedStyle(items[0]).marginLeft)+ parseFloat(getComputedStyle(items[0]).marginRight)
 
 
-    items.forEach(item =>{
-        let clone = item.cloneNode(true);
-        clone.classList.add('clone');
-        projects.appendChild(clone);
-        clones.push(clone);
-    })
 
     function getClonesWidth(){
-        console.log("Getting width");
-
         let width = 0;
         clones.forEach(clone =>{
             width += clone.offsetWidth + parseFloat(getComputedStyle(clone).marginLeft)+ parseFloat(getComputedStyle(clone).marginRight);
         })
         return width;
-    }
-
-    function getScrollPos(){
-        console.log(projects.scrollX.toString());
-        return projects.scrollX;
-    }
-
-    function setScrollPos(pos){
-        console.log("setting pos to");
-        console.log(pos);
-
-
-        projects.scrollTo({left:pos})
     }
 
     function scrollUpdate(){
@@ -162,40 +148,49 @@ include 'top.php';
         }
         else if(projects.scrollLeft <= 0){
             projects.scrollLeft = clonesWidth;
-
         }
         index = (index+1)%items.length;
-
-        // projects.style.transform = `translateX(${-projects.scrollLeft}px)`;
-
         requestAnimationFrame(scrollUpdate);
     }
-    function onLoad(){
 
+    function onLoad(){
         calculateDimensions()
-        // projects.style.width = `${sliderWidth}px`;
         projects.scrollTo({left:0});
         scrollUpdate();
     }
-    function calculateDimensions(){
 
+    function calculateDimensions(){
         sliderWidth = projects.getBoundingClientRect().width;
         clonesWidth = getClonesWidth();
     }
 
-    onLoad();
     function scrollByOneItem() {
         if (!projects.matches(':hover')) {
-            // projects.scrollLeft += projectWidth;
-            projects.scrollTo({
-                left: index * projectWidth,
-                behavior: "smooth"
-            })
+            // index = projects.scrollLeft % projectWidth;
+            // projects.scrollTo({
+            //     left: index * projectWidth,
+            //     behavior:
+            // })
+            if (projects.scrollLeft<clonesWidth - projectWidth) {
+                projects.style.scrollBehavior = "smooth";
+            }
+            else{
+                projects.style.scrollBehavior = "auto";
+            }
+
+            projects.scrollLeft += projectWidth;
         }
     }
-    setInterval(scrollByOneItem, 5000);
-
-
+    if(window.screen.width > 780){
+        items.forEach(item =>{
+            let clone = item.cloneNode(true);
+            clone.classList.add('clone');
+            projects.appendChild(clone);
+            clones.push(clone);
+        })
+        onLoad();
+        setInterval(scrollByOneItem, 5000);
+    }
 
     document.addEventListener('DOMContentLoaded', function() {
         var projectsArray = document.querySelectorAll('.project');
