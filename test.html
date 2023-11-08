@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Noel Desmarais' Personal Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Noel Desmarais" />
+    <meta name="description" content="Noel Desmarais' Personal Website" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="mask-icon" type="image/png" href="images/favicon.png" />
+    <link rel="icon" type="image/png" href="images/favicon32.png" />
+    <link rel="icon" type="image/png" href="images/favicon128.png" />
+    <link rel="icon" type="image/png" href="images/favicon180.png" />
+    <link
+      rel="stylesheet"
+      href="css/custom.css?version=1698105061"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      media="(max-width: 800px)"
+      href="css/custom-tablet.css?version=1698105061"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      media="(max-width: 600px)"
+      href="css/custom-phone.css?version=1698105061"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300"
+      rel="stylesheet"
+    />
+    <script src="rules.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtag/js?id=G-GTNH7G6WQW"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-GTNH7G6WQW");
+    </script>
+    <meta
+      http-equiv="origin-trial"
+      content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
+    />
+  </head>
+  <!-- Google tag (gtag.js) -->
+
+  <body class="index">
+    <!-- ################# Body Element ################# -->
+
+    <main id="homeMain">
+      <figure id="homeDisplay" class="home">
+        <div id="framerate">
+          <p id="fr">29 fps / 500 particles</p>
+        </div>
+        <img class="logo" src="images/NDLogo.png" alt="Noel Desmarais' Logo" />
+        <div class="name">
+          <h1>NOEL DESMARAIS</h1>
+          <h2>
+            Graduate<span class="fullScreen"> - </span><br class="mobile" />Full
+            Stack Software Engineer<span class="fullScreen"> - </span
+            ><br class="mobile" />App Developer
+          </h2>
+        </div>
+        <div class="gear-icon" onclick="toggleSettingsPopup()">
+          <img src="images/settings.png" />
+        </div>
+
+        <!-- Settings popup -->
+        <div class="settings-popup" id="settingsPopup" style="display: none">
+          <span class="settings-close" onclick="toggleSettingsPopup()">×</span>
+
+          <h2>Settings</h2>
+          <form data-gtm-form-interact-id="0">
+            <!-- Rainbow Mode radio slider -->
+            <div class="toggle-label">
+              <label class="form-switch">
+                <input
+                  type="checkbox"
+                  id="rainbowToggle"
+                  onchange="toggleRainbowMode()"
+                  data-gtm-form-interact-field-id="2"
+                />
+                <i></i>
+                Rainbow Mode
+              </label>
+            </div>
+            <!-- Particle Mode radio slider -->
+            <div class="flow-mode radio-toggle">
+              <h3>Mode:</h3>
+              <label>
+                <input
+                  type="radio"
+                  name="radio"
+                  id="flowRadio"
+                  onchange="toggleParticleMode()"
+                  checked=""
+                  data-gtm-form-interact-field-id="1"
+                />
+                <span>Flow</span>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="radio"
+                  id="particleRadio"
+                  onchange="toggleParticleMode()"
+                  data-gtm-form-interact-field-id="0"
+                />
+                <span>Particle</span>
+              </label>
+            </div>
+
+            <div class="button-label">
+              <button id="pauseAnimation" onclick="toggleStopAnimation()">
+                <img id="playPause" src="images/pause.png" />
+              </button>
+              <button id="clearCanvasButton" onclick="clearCanvas()">
+                Clear Canvas
+              </button>
+            </div>
+          </form>
+          <div class="credit">
+            <p>Interactive flow field animation<br />developed by me</p>
+          </div>
+        </div>
+      </figure>
+      <div class="content gradient">
+        <h2>ABOUT</h2>
+        <div class="about">
+          <p>
+            /*<br />I am a dedicated and highly motivated recent graduate with a
+            strong programming background and a relentless pursuit of writing
+            clean, efficient code. Throughout my journey as a Computer Science
+            &amp; Information Systems student at the University of Vermont, I
+            discovered my passion for programming and made the switch from
+            Business Administration to Software Engineering.
+
+            <br />
+            <br />
+            Combining my business analytics knowledge with software engineering,
+            I possess a unique understanding of the end-user and how they
+            interact with the code I write. This insight has been invaluable in
+            developing impactful projects, including an iOS application for the
+            University of Vermont Medical Center and a website for the
+            Schlesinger Global Family Enterprise Case Competition, a prestigious
+            event attracting universities from over 27 countries worldwide. In
+            my role as this competition’s Senior Media &amp; Communications
+            Chair, I successfully coordinated and executed effective strategies
+            to promote the competition and engage participants. This work not
+            only elevated the experience for participants but also contributed
+            to our receiving of an
+            <a href="https://www.ffi.org/awards/international-award/">
+              International Achievement Award for Family Business Research</a
+            >
+            from the Family Firm Institute.
+
+            <br />
+            <br />
+            In addition to my academic pursuits, I have thrived as an Advanced
+            Programming Teaching Assistant, honing my skills in explaining
+            complex concepts and debugging code. To reinforce my learning, I
+            embarked on personal projects such as creating a platform for
+            renters to review apartments and hold landlords accountable in
+            Burlington's captive rental market. I am a constant learner and am
+            continuously challenging myself. My current challenge that I’ve been
+            working on is creating a home monitoring system by using Arduino’s,
+            microcontrollers, sensors, and servos interconnected through
+            Bluetooth and WiFi.
+            <br />
+            <br />
+            While actively maintaining two jobs and juggling my college
+            commitments, I have remained driven and focused. I am now eager to
+            leverage my diverse experiences and recent degree and embark on a
+            rewarding career in the Software Engineering field. For a detailed
+            overview of my projects, please continue reading below.
+            <br />
+            */
+          </p>
+          <div class="imageDiv">
+            <img src="images/npd_lego.JPG" />
+            <p>
+              8-Year-Old me (left) setting up our robot at the NH FIRST LEGO
+              Robotics competition, my first introduction to engineering
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="content project-section">
+        <h2>PROJECTS</h2>
+        <h3>Click on a project to expand</h3>
+
+        <div class="popup">
+          <div class="popup-content"></div>
+          <span class="popup-close">×</span>
+        </div>
+        <div class="projects">
+          <div class="project">
+            <h3>Enigma</h3>
+            <div class="languages">
+              <p class="language" id="Python">Python</p>
+            </div>
+            <div class="descriptionDiv">
+              <p class="description">
+                As my first open-ended project during my Introduction to
+                Programming course, I had the ambitious goal of recreating the
+                WWII enciphering machine, Enigma, using Python. Despite being
+                new to programming, I wanted to challenge myself. <br /><br />
+                Through self-guided learning, I successfully developed a fully
+                functional version of Enigma. Going beyond the original scope, I
+                even added an additional feature that allowed for the
+                translation of enciphered messages into Morse code. This project
+                not only showcased my ability to tackle complex programming
+                tasks but also demonstrated my dedication to expanding my skill
+                set and exploring innovative solutions.
+              </p>
+              <div class="projectLinks">
+                <a
+                  class="projectLink codeLink"
+                  href="https://github.com/npd29/Enigma"
+                  >&lt;/View Code&gt;</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <h3>FIRE - Fall Injury Reduction Education iOS Application</h3>
+            <div class="languages">
+              <p class="language" id="Swift">Swift</p>
+            </div>
+            <p class="tools">
+              OTHER SKILLS: SwiftUI, JSON Parsing, Agile Workflow
+            </p>
+            <div class="descriptionDiv">
+              <p class="description">
+                As part of a collaborative team of four, I contributed to the
+                development of an iOS application for the University of Vermont
+                Medical Center. The objective given to us by the medical
+                professionals, was to educate individuals at risk of falling and
+                empower them to adopt safer practices. Using SwiftUI, we blended
+                design and functionality while actively involving the doctors to
+                ensure the app's features were tailored to meet the needs of the
+                end-users. <br /><br />
+                To enhance the app's functionality, we implemented efficient
+                parsing of user data and leveraged locally-stored JSON files for
+                seamless storage and retrieval. Throughout the project, we used
+                an Agile approach, working closely with our team to manage
+                workloads effectively and deliver high-quality results within
+                the allocated semester timeframe.
+              </p>
+              <div class="projectLinks">
+                <a
+                  class="projectLink codeLink"
+                  href="https://github.com/kr99251/FIRE-App"
+                  >&lt;/View Code&gt;</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <h3>RNTR</h3>
+            <div class="languages">
+              <p class="language" id="HTML">HTML</p>
+              <p class="language" id="CSS">CSS</p>
+              <p class="language" id="PHP">PHP</p>
+              <p class="language" id="JavaScript">JavaScript</p>
+            </div>
+            <p class="tools">OTHER SKILLS: API Implementation</p>
+            <div class="descriptionDiv">
+              <p class="description">
+                After going through the difficult process of finding an
+                affordable apartment in Burlington, VT, I came up with an idea
+                for a site that would help to hold landlords accountable in
+                Burlington's captive rental market. I designed and implemented a
+                website that enabled users to rate and review apartments and
+                landlords. Leveraging my skills in HTML, CSS, PHP, and
+                JavaScript, I developed both the front-end and back-end
+                functionalities to ensure a seamless user experience. To enhance
+                the accuracy and reliability of user-provided addresses, I
+                integrated an address standardization API. <br /><br />
+                To maximize the website's functionality, I leveraged SQL to
+                execute advanced queries on the underlying database, enabling
+                users to search and filter through the vast repository of
+                apartment and landlord data. Moreover, I devoted efforts to
+                optimize server response times, resulting in improved website
+                performance and enhanced user satisfaction. Additionally, I
+                employed SEO best practices to increase the website's visibility
+                and reach.
+                <br /><br />
+                Unfortunatly this site is currently decommissioned due to
+                funding limitations.
+              </p>
+              <div class="projectLinks"></div>
+            </div>
+          </div>
+          <div class="project">
+            <h3>SG-FECC 2023 Website</h3>
+            <div class="languages">
+              <p class="language" id="HTML">HTML</p>
+              <p class="language" id="CSS">CSS</p>
+            </div>
+            <p class="tools">OTHER SKILLS: WordPress, Adobe Illustrator</p>
+            <div class="descriptionDiv">
+              <p class="description">
+                As the Senior Media &amp; Communications Chair for the
+                Schlesinger Global Family Enterprise Case Competition, a
+                prestigious global business competition focused on family
+                businesses, I identified the need to enhance our online
+                presence. With participants from 27 countries over the past
+                decade, it was crucial to develop a website that accurately
+                represented the competition's scale and prominence. <br /><br />
+                Drawing on my web development experience, I quickly mastered
+                WordPress to create a professional and visually appealing
+                website for the current year's competition. This ensured both
+                immediate impact and long-term maintainability, providing a
+                seamless user experience for participants, judges, coordinators,
+                and visitors. I also implemented effective search engine
+                optimization (SEO) techniques, resulting in an estimated 300%
+                increase in website traffic. By optimizing the website's search
+                engine ranking, we significantly expanded the competition's
+                global reach and recognition.
+                <br /><br />
+                In addition to the website I came up with new ways to promote
+                the competition and engage participants.
+              </p>
+              <div class="projectLinks">
+                <a class="projectLink" href="https://site.uvm.edu/sgfecc/"
+                  >View Project</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <h3>BlockDude Game Recreation</h3>
+            <div class="languages"><p class="language" id="C++">C++</p></div>
+            <p class="tools">OTHER SKILLS: OpenGL, GLUT</p>
+            <div class="descriptionDiv">
+              <p class="description">
+                I recreated the game BlockDude, originally found on TI-84
+                calculators. The objective is to guide a block to the exit door
+                across progressively challenging levels. <br /><br />
+                To implement the game, I devised a map creation process. Using
+                an Excel file, I assigned numerical values to each cell,
+                representing different elements like bricks, movable blocks, the
+                exit, and the starting position. This allowed for flexible map
+                design without manual coding. Converting the file to CSV, I
+                parsed it to construct a 2D vector of Block objects. Using class
+                inheritance, I was able to assign each Block relevant properties
+                such as location, type, direction, and carrying status. The grid
+                structure facilitated efficient content checks and swapping
+                operations.
+              </p>
+              <div class="projectLinks"></div>
+            </div>
+          </div>
+          <div class="project">
+            <h3>Image Manipulation Program</h3>
+            <div class="languages">
+              <p class="language" id="C++">C++</p>
+              <p class="language" id="Python">Python</p>
+            </div>
+            <p class="tools">OTHER SKILLS: OpenCV</p>
+            <div class="descriptionDiv">
+              <p class="description">
+                I developed an image manipulation program that offers a wide
+                range of features, including mirroring, color inversion,
+                grayscale conversion, and the creation of kaleidoscope effects.
+                Leveraging the capabilities of C++ for fast user input handling,
+                I integrated Python and OpenCV to execute these transformations.
+                The program's functionality was accessed through a command line
+                prompt, providing users with a straightforward and efficient
+                workflow for enhancing their images.
+              </p>
+              <div class="projectLinks"></div>
+            </div>
+          </div>
+          <div class="project">
+            <h3>Automated Plant Care System</h3>
+            <div class="languages">
+              <p class="language" id="C++">C++</p>
+              <p class="language" id=" Python">Python</p>
+            </div>
+            <p class="tools">OTHER SKILLS: Bluetooth, Serial Communication</p>
+            <div class="descriptionDiv">
+              <p class="description">
+                After failing to keep my plants alive, I used an Arduino Nano
+                and an ESP8266 module, along with sensors for soil moisture,
+                light, and air quality, to automate the process of watering
+                plants and create a more nurturing environment. By continuously
+                monitoring important factors like soil moisture, light levels,
+                and air quality, my system provided valuable insights into the
+                specific needs of my plants. With the help of a peristaltic
+                pump, the system automatically watered the plants, ensuring they
+                received the appropriate amount of water at the right times.
+                This project allowed me to explore the integration of hardware
+                components and programming skills, resulting in a practical
+                solution to improve plant care. In the end, I have less dead
+                plants!
+              </p>
+              <div class="projectLinks"></div>
+            </div>
+          </div>
+          <div class="project">
+            <h3>Evolutionary Robotics Simulated Robot</h3>
+            <div class="languages">
+              <p class="language" id="Python">Python</p>
+            </div>
+            <p class="tools">OTHER SKILLS: PyroSim, PyBullet, Matplotlib</p>
+            <div class="descriptionDiv">
+              <p class="description">
+                Under the guidance of Professor Josh Bongard, I actively
+                participated in a project aimed at enhancing the locomotion
+                capabilities of a simulated robot in various environments. By
+                employing evolutionary algorithms, I focused on evolving a
+                neural network to achieve optimal performance. Throughout the
+                semester, I explored different strategies and techniques to
+                continually improve the robot's adaptability and efficiency.
+              </p>
+              <div class="projectLinks">
+                <a
+                  class="projectLink codeLink"
+                  href="https://github.com/npd29/Evolutionary-Robotics-CS206"
+                  >&lt;/View Code&gt;</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <h3>Custom Compiler</h3>
+            <div class="languages">
+              <p class="language" id="Python">Python</p>
+              <p class="language" id="X86 Assembly">X86 Assembly</p>
+            </div>
+            <div class="descriptionDiv">
+              <p class="description">
+                For my final project in the course on compiler design and
+                construction, I focused on extending the language's capabilities
+                by implementing simple dataclasses. This project was a
+                culmination of the various topics covered throughout the course,
+                which provided a comprehensive understanding of the compilation
+                process. <br /><br />
+                Throughout the semester, I explored the representation and
+                analysis of code and how to translate a high-level programming
+                language into Intel x86 assembly language. We learned about
+                essential concepts such as register allocation, static type
+                checking, and handling mutable data. The course also emphasized
+                the significance of garbage collection for efficient memory
+                management in compiled languages.
+                <br /><br />
+                By extending the language with dataclasses, I not only
+                demonstrated my proficiency in implementing new language
+                features but also showcased my grasp of the entire compilation
+                process. This project solidified my knowledge of code analysis,
+                code generation, and the crucial role of language features in
+                creating powerful and expressive programming languages.
+              </p>
+              <div class="projectLinks">
+                <a
+                  class="projectLink codeLink"
+                  href="https://github.com/npd29/CS202-Final"
+                  >&lt;/View Code&gt;</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <h3>Plants vs. Zombies Recreation</h3>
+            <div class="languages">
+              <p class="language" id="Python">Python</p>
+            </div>
+            <p class="tools">OTHER SKILLS: Python Arcade</p>
+            <div class="descriptionDiv">
+              <p class="description">
+                For this project, I collaborated with an agile team to recreate
+                the immensely popular game, Plants vs. Zombies, using Python and
+                the Python Arcade library. As part of the team, I played a
+                pivotal role in organizing the program flow and backend
+                development. I focused on designing the structure of the game,
+                ensuring seamless transitions between different states and
+                screens. Additionally, I took charge of implementing the
+                spawning mechanics for zombies, creating algorithms that
+                combined randomness with the timing patterns seen in the
+                original game. This resulted in a challenging and engaging
+                gameplay experience. <br /><br />
+                Another significant contribution I made was developing a dynamic
+                system for level progression. I designed a flexible framework
+                that allowed for the easy addition and modification of levels,
+                accommodating three waves of zombies per level, each increasing
+                in difficulty. This approach added replayability and a sense of
+                progression for players. By working on this project, I enhanced
+                my skills in game development, algorithm design, and
+                collaboration.
+              </p>
+              <div class="projectLinks">
+                <a
+                  class="projectLink codeLink"
+                  href="https://gitlab.uvm.edu/ndesmara/cs205-team-2-final-project"
+                  >&lt;/View Code&gt;</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <h3>TidByt-Inspired LED Matrix</h3>
+            <div class="languages">
+              <p class="language" id="Python">Python</p>
+              <p class="language" id="C++">C++</p>
+            </div>
+            <p class="tools">
+              OTHER SKILLS: Git, API Implementation, Image Processing
+            </p>
+            <div class="descriptionDiv">
+              <p class="description">
+                After seeing an advertisement for a LED Display that shows
+                various screens such as the time, current weather conditions,
+                and fun animations. I decided it would be a fun challenge to try
+                to build one myself. I used a Raspberry Pi Pico to control the
+                project. I also noticed there weren't many resources or guides
+                available to help with a project like this so I started writing
+                up instructions on how to replicate my project and put them on
+                GitHub. This is a current project and I am continually updating
+                it.
+              </p>
+              <div class="projectLinks">
+                <a
+                  class="projectLink codeLink"
+                  href="https://github.com/npd29/Led-Matrix"
+                  >&lt;/View Code&gt;</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content contact">
+        <h2>CONTACT</h2>
+        <h3>Feel free to reach out</h3>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/noeldesmarais/" target="_blank">
+            <img src="images/linkedin-logo.png" alt="LinkedIn.com" />
+          </a>
+          <a href="https://github.com/npd29" target="_blank">
+            <img src="images/github-logo.png" alt="Github.com" />
+          </a>
+          <a class="resume" href="resume6.27.pdf" target="_blank"
+            >View Resume</a
+          >
+        </div>
+      </div>
+
+      <footer>
+        <p>Noel Desmarais</p>
+        <p>October 2023</p>
+      </footer>
+      <canvas
+        id="defaultCanvas0"
+        class="p5Canvas"
+        width="1440"
+        height="875"
+        style="width: 1440px; height: 875px"
+      ></canvas>
+    </main>
+
+    <script src="constants.js"></script>
+    <script src="utilities.js"></script>
+    <script src="particle.js"></script>
+    <script src="flowfield.js"></script>
+  </body>
+</html>

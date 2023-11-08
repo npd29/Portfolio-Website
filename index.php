@@ -2,15 +2,54 @@
 include 'top.php';
 ?>
 <main id="homeMain">
-
     <figure id="homeDisplay" class="home">
+        <div id="framerate">
+            <p id="fr"></p>
+        </div>
         <img class="logo" src="images/NDLogo.png" alt="Noel Desmarais' Logo">
         <div class="name">
             <h1>NOEL DESMARAIS</h1>
             <h2>Graduate<span class="fullScreen"> - </span><br class="mobile">Full Stack Software Engineer<span class="fullScreen"> - </span><br class="mobile">App Developer</h2>
         </div>
-        <div class="arrow arrow-one"></div>
-        <div class="arrow arrow-two"></div>
+        <div class="gear-icon" onclick="toggleSettingsPopup()"><img src="images/settings.png"></div>
+
+        <!-- Settings popup -->
+        <div class="settings-popup" id="settingsPopup">
+            <span class="settings-close" onclick="toggleSettingsPopup()">&times;</span>
+
+            <h2>Settings</h2>
+            <form>
+                <!-- Rainbow Mode radio slider -->
+                <div class="toggle-label">
+                    <label class="form-switch">
+                        <input type="checkbox" id="rainbowToggle" onchange="toggleRainbowMode()">
+                        <i></i>
+                        Rainbow Mode
+                    </label>
+                </div>
+                <!-- Particle Mode radio slider -->
+                <div class="flow-mode radio-toggle">
+                    <h3>Mode:</h3>
+                    <label>
+                        <input type="radio" name="radio" id="flowRadio" onchange="toggleParticleMode()" checked>
+                        <span>Flow</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="radio" id="particleRadio" onchange="toggleParticleMode()">
+                        <span>Particle</span>
+                    </label>
+                </div>
+
+                <div class="button-label">
+                    <button id="pauseAnimation" onclick="toggleStopAnimation()"><img id="playPause" src="images/pause.png"></button>
+                    <button id="clearCanvasButton" onclick="clearCanvas()">Clear Canvas</button>
+                </div>
+            </form>
+            <div class="credit">
+                <p>Interactive flow field animation<br>developed by me</p>
+            </div>
+        </div>
+
 
     </figure>
     <div class="content gradient">
@@ -19,7 +58,7 @@ include 'top.php';
             <p>/*<br>I am a dedicated and highly motivated recent graduate with a strong programming background and a
                 relentless pursuit of writing clean, efficient code. Throughout my journey as a Computer Science & Information
                 Systems student at the University of Vermont, I discovered my passion for programming and made the switch from
-                Business Administration to pursue my true calling.
+                Business Administration to Software Engineering.
 
                 <br>
                 <br>
@@ -29,6 +68,8 @@ include 'top.php';
                 for the Schlesinger Global Family Enterprise Case Competition, a prestigious event attracting universities
                 from over 27 countries worldwide. In my role as this competition’s Senior Media & Communications Chair, I
                 successfully coordinated and executed effective strategies to promote the competition and engage participants.
+                This work not only elevated the experience for participants but also contributed to our receiving of an <a href="https://www.ffi.org/awards/international-award/">
+                    International Achievement Award for Family Business Research</a> from the Family Firm Institute.
 
                 <br>
                 <br>
@@ -47,73 +88,72 @@ include 'top.php';
                 */
             </p>
             <div class="imageDiv">
-                <img src="images/npd2.jpg">
-                <p>Me writing some really impressive code (probably)</p>
+                <img src="images/npd_lego.JPG">
+                <p>8-Year-Old me (left) setting up our robot at the NH FIRST LEGO Robotics competition, my first introduction to engineering</p>
             </div>
 
         </div>
-        
+
     </div>
     <div class="content project-section">
         <h2>PROJECTS</h2>
+        <h3>Click on a project to expand</h3>
         <div class="popup">
             <div class="popup-content">
             </div>
             <span class="popup-close">&times;</span>
         </div>
-        <div class="projects"><?php
-            $sql="SELECT fldName, fldDescription, fldLanguages, fldTools, fldDate, fldCodeLink, fldFinishedLink, fldImageAddress FROM tblProjects";
+        <div class="projects">
+            <?php
+            $sql = "SELECT fldName, fldDescription, fldLanguages, fldTools, fldDate, fldCodeLink, fldFinishedLink, fldCaption FROM tblProjects";
             $projects = $thisDBReader->select($sql);
-        foreach ($projects as $project){
-            print '<div class="project"><h3>'.$project['fldName'].'</h3><div class="languages">';
-            $languages = explode (",", $project['fldLanguages']);
-            foreach ($languages as $language){
-                print '<p class="language" id="'.$language.'">'. $language. '</p>';
-            }
-            if (!is_null($project['fldTools'])){
-                $tools = explode (",", $project['fldTools']);
-                $toolsText ='';
-                foreach ($tools as $tool) {
-                    $toolsText .= $tool .", ";
+            foreach ($projects as $project) {
+                print '<div class="project"><h3>' . $project['fldName'] . '</h3><div class="languages">';
+                $languages = explode(",", $project['fldLanguages']);
+                foreach ($languages as $language) {
+                    print '<p class="language" id="' . $language . '">' . $language . '</p>';
                 }
-                $toolsText = rtrim($toolsText, ", ");
-                print '</div><p class="tools">ALSO USED: '.$toolsText. '</p>';
-            }else{
-                print '</div>';
-            }
-            print'<div class="descriptionDiv"><p class="description">'.$project['fldDescription'].'</p><div class="projectLinks">';
-            if (!is_null($project['fldCodeLink'])){
-                print '<a class="projectLink codeLink" href="'.$project['fldCodeLink'].'">&lt;/View Code&gt;</a>';
-            }
-            if (!is_null($project['fldFinishedLink'])){
-                print '<a class="projectLink" href="'.$project['fldFinishedLink'].'">View Project</a>';
-            }
-            print '</div></div></div>';
+                // if (!is_null($project['fldTools'])) {
+                //     $tools = explode(",", $project['fldTools']);
+                //     $toolsText = '';
+                //     foreach ($tools as $tool) {
+                //         $toolsText .= $tool . ", ";
+                //     }
+                //     $toolsText = rtrim($toolsText, ", ");
+                //     print '</div><p class="tools">OTHER SKILLS: ' . $toolsText . '</p>';
+                // } 
+                // else {
+                //     print '</div>';
+                // }
+                print '</div><p class="tools">' . $project['fldCaption'] . '</p>';
 
-        }
+                print '<div class="descriptionDiv"><p class="description">' . $project['fldDescription'] . '</p><div class="projectLinks">';
+                if (!is_null($project['fldCodeLink'])) {
+                    print '<a class="projectLink codeLink" href="' . $project['fldCodeLink'] . '">&lt;/View Code&gt;</a>';
+                }
+                if (!is_null($project['fldFinishedLink'])) {
+                    print '<a class="projectLink" href="' . $project['fldFinishedLink'] . '">View Project</a>';
+                }
+                print '</div></div></div>';
+            }
 
 
             ?>
         </div>
-        <p>Click on a project to expand</p>
     </div>
     <div class="content contact">
         <h2>CONTACT</h2>
-        <h3>Feel free to reach out on LinkedIn or email me.</h3>
+        <h3>Feel free to reach out for more information</h3>
         <div class="contact-links">
-            <a href="https://www.linkedin.com/in/noeldesmarais/">
+            <a href="https://www.linkedin.com/in/noeldesmarais/" target="_blank">
                 <img src="images/linkedin-logo.png" alt="LinkedIn.com">
             </a>
-            <a href="https://github.com/npd29">
+            <a href="https://github.com/npd29" target="_blank">
                 <img src="images/github-logo.png" alt="Github.com">
             </a>
-            <a class="resume" href="resume3.19.pdf" target="_blank">View Resume</a>
+            <a class="resume" href="resume10.2.pdf" target="_blank">View Resume</a>
         </div>
     </div>
-
-
-    <div class="overlay"></div>
-
 
     <?php
     include 'footer.php'
@@ -121,101 +161,9 @@ include 'top.php';
 
 </main>
 </body>
-<script>
-
-    let projects = document.querySelector('.projects');
-    let clonesWidth;
-    let sliderWidth;
-    let clones = [];
-    let disableScroll = false;
-    var index = 0;
-    let items = [...document.querySelectorAll('.project')];
-    let projectWidth = items[0].offsetWidth + parseFloat(getComputedStyle(items[0]).marginLeft)+ parseFloat(getComputedStyle(items[0]).marginRight)
-
-
-
-    function getClonesWidth(){
-        let width = 0;
-        clones.forEach(clone =>{
-            width += clone.offsetWidth + parseFloat(getComputedStyle(clone).marginLeft)+ parseFloat(getComputedStyle(clone).marginRight);
-        })
-        return width;
-    }
-
-    function scrollUpdate(){
-        if(projects.scrollLeft >= clonesWidth){
-            projects.scrollLeft = 0;
-        }
-        else if(projects.scrollLeft <= 0){
-            projects.scrollLeft = clonesWidth;
-        }
-        index = (index+1)%items.length;
-        requestAnimationFrame(scrollUpdate);
-    }
-
-    function onLoad(){
-        calculateDimensions()
-        projects.scrollTo({left:0});
-        scrollUpdate();
-    }
-
-    function calculateDimensions(){
-        sliderWidth = projects.getBoundingClientRect().width;
-        clonesWidth = getClonesWidth();
-    }
-
-    function scrollByOneItem() {
-        if (!projects.matches(':hover')) {
-            // index = projects.scrollLeft % projectWidth;
-            // projects.scrollTo({
-            //     left: index * projectWidth,
-            //     behavior:
-            // })
-            if (projects.scrollLeft<clonesWidth - projectWidth) {
-                projects.style.scrollBehavior = "smooth";
-            }
-            else{
-                projects.style.scrollBehavior = "auto";
-            }
-
-            projects.scrollLeft += projectWidth;
-        }
-    }
-    if(window.screen.width > 780){
-        items.forEach(item =>{
-            let clone = item.cloneNode(true);
-            clone.classList.add('clone');
-            projects.appendChild(clone);
-            clones.push(clone);
-        })
-        onLoad();
-        setInterval(scrollByOneItem, 5000);
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var projectsArray = document.querySelectorAll('.project');
-        var popup = document.querySelector('.popup');
-        var popupContent = document.querySelector('.popup-content');
-        var popupClose = document.querySelector('.popup-close');
-        var projectSection = document.querySelector('.project-section');
-
-
-        projectsArray.forEach(function(link) {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                var project = this.closest('.project');
-                popupContent.innerHTML = project.innerHTML;
-                popup.classList.toggle('show');
-                projectSection.classList.toggle('show-popup');
-
-            });
-        });
-
-        popupClose.addEventListener('click', function() {
-            popup.classList.remove('show');
-            projectSection.classList.remove('show-popup');
-        });
-    });
-</script>
+<script src="constants.js"></script>
+<script src="utilities.js"></script>
+<script src="particle.js"></script>
+<script src="flowfield.js"></script>
 
 </html>

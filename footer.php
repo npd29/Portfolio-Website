@@ -1,4 +1,4 @@
 <footer>
     <p>Noel Desmarais</p>
-    <p>June 2023</p>
+    <p>October 2023</p>
 </footer>

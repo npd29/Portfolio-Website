@@ -1,0 +1,18 @@
+.settings-popup {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(34, 34, 34, 0.9);
+}
+.gear-icon {
+  bottom: 1em;
+  right: 1em;
+}
+
+#framerate {
+  bottom: 0.5em;
+  left: 0.5em;
+}
+#framerate p {
+  font-size: small;
+}
