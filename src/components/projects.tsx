@@ -2,14 +2,20 @@ import { projects } from '../types';
 
 export function Projects() {
     return (
-        <>
+        <div className="projects">
             {projects.map((project) => {
                 return (
                     project.isVisible && (
                         <div className="project">
                             <h3>{project.name}</h3>
                             <div className="languages">
-                                <p className="language">{project.languages}</p>
+                                {project.languages.map((language) => {
+                                    return (
+                                        <p className={'language ' + language}>
+                                            {language}
+                                        </p>
+                                    );
+                                })}
                             </div>
                             <p className="tools">{project.caption}</p>
                             <div className="descriptionDiv">
@@ -35,6 +41,6 @@ export function Projects() {
                     )
                 );
             })}
-        </>
+        </div>
     );
 }

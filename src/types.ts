@@ -10,7 +10,7 @@ export const projects: Project[] = [
         imageAddress: undefined,
         finishedLink: undefined,
         caption:
-            'Recreated a product using an LED Matrix and a RaspberryPi Pico.',
+            'Recreated a product using an LED Matrix and a Raspberry Pi Pico.',
         isVisible: true
     },
     {
