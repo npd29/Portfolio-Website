@@ -1,0 +1,168 @@
+.project-section::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    z-index: 9998;
+    display: none;
+}
+.project-section.show-popup::after {
+    display: block;
+}
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 70vw;
+    margin: auto;
+}
+
+.project {
+    background: #333;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 2em;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    position: relative;
+    width: 25%;
+    margin: 0.75em;
+    min-width: 20em;
+    scroll-snap-align: start;
+    min-height: 20em;
+    min-width: 20em;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+.projects::-webkit-scrollbar {
+    display: none;
+}
+
+.project .descriptionDiv {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease;
+}
+
+.project:hover {
+    background: #444;
+    transform: translateY(-1em);
+    transition: all 0.75s ease;
+}
+
+.project h3 {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    margin-top: 0;
+    font-weight: normal;
+}
+
+.projectLink {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--teal);
+    color: var(--grey);
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    margin-top: 1em;
+    transition: background 0.5s ease;
+}
+
+.projectLink:hover {
+    background: rgb(100, 255, 250);
+    transform: translateY(-0.25em);
+}
+
+.languages {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+}
+.tools {
+    font-family: 'JetBrains Italic';
+    font-size: small;
+    margin-top: auto;
+    opacity: 70%;
+}
+
+.language {
+    border-radius: 10px;
+    padding: 0.3em 0.6em;
+    margin: 0.2em;
+    background: var(--teal);
+    color: var(--grey);
+    font-size: 0.8em;
+    width: max-content;
+}
+
+.Python {
+    background: var(--green);
+}
+
+.Swift {
+    background: var(--pink);
+}
+
+.PHP {
+    background: var(--purple);
+}
+
+.HTML {
+    background: var(--yellow);
+}
+
+.JavaScript {
+    background: var(--red);
+}
+
+.CSS {
+    background: var(--ltblue);
+}
+
+@media screen and (max-width: 800px) {
+    .projects {
+        margin-top: 5em;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1em;
+    }
+
+    .project {
+        padding: 1em;
+        min-width: 0;
+        width: auto;
+    }
+    .project .descriptionDiv {
+        max-height: none;
+    }
+    .project h3 {
+        margin-top: 1em;
+    }
+    .contact-links {
+        flex-direction: column;
+        margin: auto;
+    }
+    .contact-links a {
+        margin: 1em auto !important;
+    }
+    .tools {
+        display: none;
+    }
+    .project-section > .heading-container > h3 {
+        display: none;
+    }
+}
+
+.project-section > p {
+    font-family: 'JetBrains Italic';
+    font-size: smaller;
+    opacity: 50%;
+    margin-left: 5em;
+}

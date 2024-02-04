@@ -1,0 +1,24 @@
+.about {
+    display: flex;
+}
+.about p {
+    margin-right: 2em;
+}
+.about a {
+    font-family: 'JetBrains Mono';
+}
+.image-container img {
+    width: 30vw;
+    border-radius: 4px;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+}
+.image-container p {
+    text-align: center;
+    font-size: small;
+    margin: auto;
+    margin-top: 1em;
+}

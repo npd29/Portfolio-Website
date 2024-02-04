@@ -1,7 +1,11 @@
+import image from '../../assets/images/lego.jpg';
+import './about.css';
 export function About() {
     return (
         <div className="content gradient">
-            <h2>ABOUT</h2>
+            <div className="heading-container">
+                <h2>ABOUT</h2>
+            </div>
             <div className="about">
                 <p>
                     <br />I am a dedicated and highly motivated recent graduate
@@ -56,12 +60,9 @@ export function About() {
                     <br />
                     */
                 </p>
-                <div className="imageDiv">
-                    <img
-                        alt="Me building legos"
-                        src=url=("../assets/images/npd_lego.JPG")
-                    />
-                    
+                <div className="image-container">
+                    <img alt="Me building legos" src={image} />
+
                     <p>
                         8-Year-Old me (left) setting up our robot at the NH
                         FIRST LEGO Robotics competition, my first introduction
