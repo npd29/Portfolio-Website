@@ -1,21 +1,18 @@
-import { signal } from '@preact/signals';
 import { Project, projects } from '../../types';
 import { Popup } from '../popup/popup';
 import './projects.css';
-import { useEffect } from 'react';
-
-const currentProject = signal<Project | undefined>(undefined);
+import { useState } from 'react';
 
 export function Projects() {
+    const [content, setContent] = useState<React.ReactNode>(null);
+
     function expandProject(e: React.MouseEvent<HTMLDivElement>, index: number) {
-        currentProject.value = projects[index];
-        const popup = document.getElementById('popup')!;
-        popup.classList.toggle('show');
+        updateContent(projects[index]);
     }
 
-    const renderProject = (project: Project | undefined) => {
+    const updateContent = (project: Project | undefined) => {
         if (project) {
-            return (
+            setContent(
                 <>
                     <h3>{project.name}</h3>
                     <div className="languages">
@@ -50,11 +47,7 @@ export function Projects() {
                 </>
             );
         }
-        return <></>;
     };
-    useEffect(() => {
-        renderProject(currentProject.value);
-    }, [currentProject]);
 
     return (
         <div className="content project-section">
@@ -62,7 +55,9 @@ export function Projects() {
                 <h2>PROJECTS</h2>
                 <h3 className="hint">Click on a project to expand</h3>
             </div>
-            <Popup content={renderProject(currentProject.value)}></Popup>
+            {content && (
+                <Popup content={content!} setContent={setContent}></Popup>
+            )}
             <div className="projects">
                 {projects.map((project, index) => {
                     return (

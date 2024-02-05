@@ -1,5 +1,4 @@
 import './App.css';
-import React, { Component } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
 import { Projects } from './components/projects/projects';
 import { About } from './components/about/about';

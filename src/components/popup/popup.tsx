@@ -1,13 +1,15 @@
 import './popup.css';
 import close from '../../assets/images/close.svg';
 interface PopupProps {
-    content: React.ReactElement;
+    content: React.ReactNode;
+    setContent: (content: React.ReactNode) => void;
 }
-export function Popup({ content }: PopupProps) {
+export function Popup({ content, setContent }: PopupProps) {
     function closePopup() {
         document.getElementById('description')!.style.display = 'none';
         const popup = document.getElementById('popup')!;
         popup.classList.toggle('show');
+        setContent(null);
     }
     return (
         <div className="popup" id="popup">

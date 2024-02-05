@@ -1,5 +1,5 @@
 .popup {
-    display: none;
+    display: flex;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -12,6 +12,8 @@
     overflow: auto;
     z-index: 9999;
     scrollbar-base-color: rgba(150, 150, 150, 0);
+    justify-content: center;
+    align-items: center;
 }
 .popup::-webkit-scrollbar {
     opacity: 0;
