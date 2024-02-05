@@ -1,12 +1,13 @@
 import './App.css';
-import P5Wrapper from 'react-p5-wrapper';
 import { Projects } from './components/projects/projects';
 import { About } from './components/about/about';
 import { Contact } from './components/contact';
+import { Hero } from './components/hero/hero';
 
 function App() {
     return (
         <div className="App">
+            <Hero></Hero>
             <About></About>
             <Projects></Projects>
             <Contact></Contact>
