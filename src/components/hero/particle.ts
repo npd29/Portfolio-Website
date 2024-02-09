@@ -80,6 +80,7 @@ export class Particle {
 
     edges() {
         if (this.position.x > width) {
+            console.log(this.position.x, width);
             this.position.x = 0;
             this.updatePrev();
         }

@@ -1,9 +1,10 @@
 import { ReactP5Wrapper } from 'react-p5-wrapper';
 import { flowfield } from './flowfield';
+import { createContext } from 'preact';
 export function Hero() {
     return (
         <>
-            <ReactP5Wrapper sketch={flowfield} />
+            <ReactP5Wrapper sketch={flowfield}></ReactP5Wrapper>
             <div id="homeDisplay" className="home">
                 <div id="framerate">
                     <p id="fr"></p>
