@@ -109,7 +109,7 @@ export const projects: Project[] = [
         imageAddress: undefined,
         finishedLink: undefined,
         caption:
-            'Collaborated with a small team to recreate. the game Plants vs. Zombies',
+            'Collaborated with a small team to recreate the game Plants vs. Zombies',
         isVisible: true
     },
     {

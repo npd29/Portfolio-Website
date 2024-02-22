@@ -1,14 +1,12 @@
 export var opacity = 10;
-export var width = window.outerWidth;
-export var height = window.outerHeight;
+export var width = window.innerWidth;
+export var height = window.innerHeight;
 export var rainbowMode = false;
 export var myColor = [0, 255, 255, opacity];
 export var particleMode = false;
 export var inc = 0.1;
-export let cols = 10,
-    rows = 10;
+
 export let scl = 20;
-export let zoff = 0;
 export let fr;
 export let particles = [];
 export let flowfield = [];

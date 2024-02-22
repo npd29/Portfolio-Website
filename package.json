@@ -15,6 +15,7 @@
         "preact": "^10.19.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-p5": "^1.4.1",
         "react-p5-wrapper": "^4.1.2",
         "react-scripts": "5.0.1",
         "web-vitals": "^2.1.4"

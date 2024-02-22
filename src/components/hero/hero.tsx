@@ -1,9 +1,13 @@
 import { ReactP5Wrapper } from 'react-p5-wrapper';
 import { flow } from './flowfield';
+import { sketch } from './test.js';
 export function Hero() {
     return (
         <>
             <ReactP5Wrapper sketch={flow}></ReactP5Wrapper>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.dom.min.js"></script>
+            <script src="flow.js"></script>
             <div id="homeDisplay" className="home">
                 <div id="framerate">
                     <p id="fr"></p>
