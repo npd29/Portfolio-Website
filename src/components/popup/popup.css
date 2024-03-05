@@ -40,11 +40,11 @@
 }
 .popup-content .description {
     max-height: 40vh;
-    scrollbar-width: thin;
+    overflow-y: auto;
     scrollbar-color: rgba(150, 150, 150);
 }
 
-.popup-content .description::-webkit-scrollbar {
+.popup-content .description::-webkit-scrollbar-track {
     width: 8px;
     opacity: 0;
 }

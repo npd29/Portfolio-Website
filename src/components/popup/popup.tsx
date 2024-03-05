@@ -10,6 +10,7 @@ export function Popup({ content, setContent }: PopupProps) {
         const popup = document.getElementById('popup')!;
         popup.classList.toggle('show');
         setContent(null);
+        document.getElementById('fullscreen')!.style.display = 'none';
     }
     return (
         <div className="popup" id="popup">

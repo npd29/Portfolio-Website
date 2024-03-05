@@ -46,6 +46,7 @@ export function Projects() {
                     </div>
                 </>
             );
+            document.getElementById('fullscreen')!.style.display = 'block';
         }
     };
 
@@ -55,6 +56,7 @@ export function Projects() {
                 <h2>PROJECTS</h2>
                 <h3 className="hint">Click on a project to expand</h3>
             </div>
+            <div id="fullscreen" className="fullscreen"></div>
             {content && (
                 <Popup content={content!} setContent={setContent}></Popup>
             )}

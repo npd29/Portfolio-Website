@@ -1,3 +1,6 @@
+import linkedinLogo from '../assets/images/linkedin-logo.png';
+import githubLogo from '../assets/images/github-logo.png';
+
 export function Contact() {
     return (
         <div className="content contact">
@@ -11,14 +14,14 @@ export function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img src="images/linkedin-logo.png" alt="LinkedIn.com" />
+                    <img src={linkedinLogo} />
                 </a>
                 <a
                     href="https://github.com/npd29"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img src="images/github-logo.png" alt="Github.com" />
+                    <img src={githubLogo} alt="Github.com" />
                 </a>
                 <a className="resume" href="resume10.2.pdf" target="_blank">
                     View Resume

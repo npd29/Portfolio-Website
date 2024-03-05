@@ -1,14 +1,5 @@
-// import {
-//     createVector,
-//     random,
-//     floor,
-//     stroke,
-//     strokeWeight,
-//     line,
-//     frameRate
-// } from 'react-p5-wrapper';
-
-// export function debounce(func, wait) {
+// import {particleMode} from './constants';
+// function debounce(func, wait) {
 //     let timeout;
 //     return function () {
 //         clearTimeout(timeout);
@@ -16,22 +7,7 @@
 //     };
 // }
 
-// Your checkInView function
-// export function checkInView() {
-//     var scrollY = window.scrollY;
-//     var windowHeight = window.innerHeight;
-//     if (scrollY > windowHeight) {
-//         inView = false;
-//     } else {
-//         inView = true;
-//     }
-// }
-
-// Apply the debounce to the scroll event
-// const debouncedCheckInView = debounce(checkInView, 200);
-// window.addEventListener('scroll', debouncedCheckInView);
-
-// export function changeColor() {
+// function changeColor() {
 //     if (rainbowMode) {
 //         myColor = [
 //             (myColor[0] += delta),
@@ -46,12 +22,13 @@
 //         }
 //     }
 // }
-// export function clearCanvas() {
+
+// function clearCanvas() {
 //     event.preventDefault();
 //     background('#222');
 // }
 
-// export function toggleRainbowMode() {
+// function toggleRainbowMode() {
 //     if (rainbowToggle.checked) {
 //         rainbowMode = true;
 //         rainbowInterval = setInterval(changeColor, 500);
@@ -63,7 +40,7 @@
 // }
 
 // // Function to toggle the visibility of the settings popup
-// export function toggleSettingsPopup() {
+// function toggleSettingsPopup() {
 //     const popup = document.getElementById('settingsPopup');
 //     if (popup.style.display === 'flex') {
 //         popup.style.display = 'none';
@@ -72,7 +49,7 @@
 //     }
 // }
 
-// export function toggleStopAnimation() {
+// function toggleStopAnimation() {
 //     event.preventDefault();
 
 //     if (stopAnimation) {
@@ -84,7 +61,7 @@
 //     }
 // }
 
-// export function toggleParticleMode() {
+// function toggleParticleMode() {
 //     if (particleRadio.checked) {
 //         if (!particleMode) {
 //             clearCanvas();

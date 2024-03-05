@@ -1,13 +1,15 @@
 import 'p5';
-import { cols, rows, scl, width, height, myColor } from './constants';
+import { cols, rows, scl, myColor } from './constants';
 let particleOpacity = 255;
 let flowOpacity = 10;
 export class Particle {
-    constructor(p5) {
+    constructor(p5, width, height) {
         this.p5 = p5;
+        this.width = width;
+        this.height = height;
         this.pos = p5.createVector(
-            Math.random() * width,
-            Math.random() * height
+            Math.random() * this.width,
+            Math.random() * this.height
         );
         this.vel = p5.createVector(0, 0);
         this.acc = p5.createVector(0, 0);
@@ -54,20 +56,20 @@ export class Particle {
     }
 
     edges() {
-        if (this.pos.x > width) {
+        if (this.pos.x > this.width) {
             this.pos.x = 0;
             this.updatePrev();
         }
         if (this.pos.x < 0) {
-            this.pos.x = width;
+            this.pos.x = this.width;
             this.updatePrev();
         }
-        if (this.pos.y > height) {
+        if (this.pos.y > this.height) {
             this.pos.y = 0;
             this.updatePrev();
         }
         if (this.pos.y < 0) {
-            this.pos.y = height;
+            this.pos.y = this.height;
             this.updatePrev();
         }
     }
