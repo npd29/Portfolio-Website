@@ -2,33 +2,39 @@ import { Particle } from './particle';
 import { SketchProps } from 'react-p5-wrapper';
 import { scl, numParticles, inc } from './constants';
 import './utilities';
-import { P5CanvasInstance } from 'react-p5-wrapper';
+import { P5CanvasInstance, ReactP5Wrapper } from '@p5-wrapper/react';
 import { Signal, signal } from '@preact/signals';
+
 type MySketchProps = SketchProps & {
     rainbowMode: Signal;
     particleMode: Signal;
 };
+
 export function flow(p5: P5CanvasInstance<MySketchProps>) {
-    const props = ;
+    let props: MySketchProps;
     let width = window.innerWidth;
     let height = window.innerHeight;
-    var z = 1;
+    let z = 1;
+    let delta = 0.000006;
     let rows: number, cols: number;
     let flowfield: any[] = [];
-    // var myColor: number[] = [0, 255, 255];
-    // var colorDelta = 0.1;
+    let cleanfield: any[] = [];
     let particles: any[] = [];
-    var zoff = 0;
-    // p5.updateWithProps = (props) => {
-    //     // if (props.rainbowMode) {
-    //     //     rainbowMode.value = props.rainbowMode;
-    //     //     console.log('EDIT', rainbowMode);
-    //     // }
-    //     if (props.particleMode) {
-    //         particleMode.value = props.particleMode;
-    //     }
-    // };
+    let cleanup: any[] = [];
+    let zoff = 0;
+    let z1off = -100 * delta;
+    let particleMode = signal(false);
+    let delayPassed = false;
 
+    p5.updateWithProps = (props) => {
+        if (props.rainbowMode) {
+            props.rainbowMode.value = props.rainbowMode;
+            // console.log('EDIT', rainbowMode);
+        }
+        if (props.particleMode.value) {
+            props.particleMode.value = props.particleMode.value;
+        }
+    };
     // function getFramerate() {
     //     document.getElementById('fr').innerHTML =
     //         Math.floor(p5.frameRate()) +
@@ -36,14 +42,12 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
     //         particles.length +
     //         ' particles';
     // }
-    function loopZ() {
-        if (!props.particleMode.value) {
-            z *= -1;
-        }
-    }
-
-    // setInterval(getFramerate, 500);
-    setInterval(loopZ, 30000); // bounce every 30 seconds
+    // function loopZ(props: MySketchProps) {
+    //     if (!props.particleMode.value) {
+    //         z *= -1;
+    //     }
+    // }
+    // setInterval(loopZ, 30000); // bounce every 30 seconds
 
     p5.setup = () => {
         width = p5.windowWidth;
@@ -53,83 +57,77 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
         cols = Math.floor(width / scl);
         rows = Math.floor(height / scl);
         flowfield = new Array(cols * rows);
+        cleanfield = new Array(cols * rows);
         particles = [];
-        // myColor = [0, 255, 255];
-        for (var x = 0; x < numParticles; x++) {
-            particles.push(new Particle(p5, width, height));
+        cleanup = [];
+        p5.background(particleMode.value ? '#222' : '#222');
+        p5.noiseDetail(
+            particleMode.value ? 1 : 4,
+            particleMode.value ? 0.5 : 0.1
+        );
+        for (let x = 0; x < numParticles; x++) {
+            const xVal = Math.random() * width;
+            const yVal = Math.random() * height;
+            particles.push(new Particle(p5, width, height, xVal, yVal));
+            // temp.color = [34, 34, 34, 10];
+            cleanup.push(new Particle(p5, width, height, xVal, yVal));
+            cleanup[x].color = [255, 255, 255, 50];
         }
-        // isSetup = true;
+        setTimeout(() => {
+            delayPassed = true;
+        }, 10000); // 10 seconds delay
     };
 
     p5.draw = () => {
         if (window.scrollY < window.innerHeight) {
-            if (!props.particleMode.value) {
-                p5.noiseDetail(4, 0.1);
-                // p5.background('#222');
-            } else {
-                p5.background('#222');
-                p5.noiseDetail(1, 0.5);
-            }
-            var xoff = 0;
-            // var zoff = 0;
-            var yoff = 0;
-            for (var y = 0; y < rows; y++) {
+            let xoff = 0;
+            let yoff = 0;
+            for (let y = 0; y < rows; y++) {
                 xoff = 0;
-                for (var x = 0; x < cols; x++) {
-                    var index = x + y * cols;
-                    // if (x === 1 && y === 1) {
-                    //     console.log(xoff, yoff, zoff);
-                    //     // console.log(p5.noise(xoff, yoff, zoff));
-                    // }
-                    var angle = p5.noise(xoff, yoff, zoff) * Math.PI * 2 * 1.5;
-                    var v = p5.createVector(Math.cos(angle), Math.sin(angle));
-                    if (!props.particleMode.value) {
-                        v.setMag(10);
-                    } else {
-                        v.setMag(0.2);
-                    }
+                for (let x = 0; x < cols; x++) {
+                    const index = x + y * cols;
+                    const angle =
+                        p5.noise(xoff, yoff, zoff) * Math.PI * 2 * 1.5;
+                    const angle1 =
+                        p5.noise(xoff, yoff, zoff) * Math.PI * 2 * 1.5;
+                    const v = p5.createVector(Math.cos(angle), Math.sin(angle));
+                    const v1 = p5.createVector(
+                        Math.cos(angle1),
+                        Math.sin(angle1)
+                    );
+                    v.setMag(particleMode.value ? 0.2 : 10);
+                    v1.setMag(particleMode.value ? 0.2 : 10);
                     flowfield[index] = v;
+                    cleanfield[index] = v1;
                     xoff += inc;
                 }
                 yoff += inc;
-                zoff += z * 0.000006;
+                zoff += z * delta;
+                z1off += z * delta;
             }
-            // if (rainbowMode) {
-            //     myColor = [
-            //         (myColor[0] += colorDelta),
-            //         (myColor[1] -= colorDelta),
-            //         myColor[2]
-            //     ];
-            //     if (myColor[0] >= 255) {
-            //         colorDelta = -1;
-            //     } else if (myColor[1] >= 255) {
-            //         colorDelta = 1;
-            //     }
-            // }
-            // p5.stroke(myColor[0], myColor[1], myColor[2], 10);
-            if (!props.particleMode.value) {
-                for (var i = 0; i < particles.length; i++) {
-                    // p5.push();
-                    // p5.translate(particles[i].pos.x, particles[i].pos.y);
-
-                    particles[i].follow(flowfield);
-                    particles[i].update();
-                    particles[i].edges();
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].follow(flowfield);
+                particles[i].update();
+                particles[i].edges();
+                if (delayPassed) {
+                    cleanup[i].follow(cleanfield);
+                    cleanup[i].update();
+                    cleanup[i].edges();
+                }
+                if (particleMode.value) {
                     particles[i].show();
-                    // p5.pop();
-                }
-            } else {
-                for (var i = 0; i < particles.length; i++) {
-                    particles[i].follow(flowfield);
-                    particles[i].update();
-                    particles[i].edges();
-                    particles[i].showParticle();
+                } else {
+                    particles[i].show();
+                    if (delayPassed) {
+                        cleanup[i].show();
+                    }
                 }
             }
-        }
-        // Initialize the setup function on window resize
-        if (window.screen.width > 780) {
-            window.onresize = p5.setup;
         }
     };
+
+    // Initialize the setup function on window resize
+    if (window.screen.width > 780) {
+        // window.onresize = p5.setup;
+    }
 }

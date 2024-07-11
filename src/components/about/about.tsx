@@ -8,55 +8,45 @@ export function About() {
             </div>
             <div className="about">
                 <p>
-                    <br />I am a dedicated and highly motivated recent graduate
-                    with a strong programming background and a relentless
-                    pursuit of writing clean, efficient code. Throughout my
-                    journey as a Computer Science & Information Systems student
-                    at the University of Vermont, I discovered my passion for
-                    programming and made the switch from Business Administration
-                    to Software Engineering.
+                    /*
+                    <br />I am a passionate and versatile software engineer with
+                    a degree in Computer Science &amp; Information Systems from
+                    the University of Vermont. I have a strong foundation in
+                    C++, Java, Python, which I gained while working as an
+                    Advanced Programming Teaching Assistant. There, I also
+                    taught and assisted students with the implementation and
+                    understanding of data structures and algorithms. I am
+                    currently work at Trinnex, a CDM Smith subsidiary as a
+                    software developer. There I have been working on creating
+                    complex web-based applications using Typescript, React, and
+                    implementing Azure functions.
                     <br />
                     <br />
-                    Combining my business analytics knowledge with software
-                    engineering, I possess a unique understanding of the
-                    end-user and how they interact with the code I write. This
-                    insight has been invaluable in developing impactful
-                    projects, including an iOS application for the University of
-                    Vermont Medical Center and a website for the Schlesinger
-                    Global Family Enterprise Case Competition, a prestigious
-                    event attracting universities from over 27 countries
-                    worldwide. In my role as this competition’s Senior Media &
-                    Communications Chair, I successfully coordinated and
-                    executed effective strategies to promote the competition and
-                    engage participants. This work not only elevated the
-                    experience for participants but also contributed to our
-                    receiving of an{' '}
-                    <a href="https://www.ffi.org/awards/international-award/">
-                        International Achievement Award for Family Business
-                        Research
-                    </a>{' '}
-                    from the Family Firm Institute.
+                    In addition to my professional work, I have been involved in
+                    academic and personal projects that showcase my creativity
+                    and problem-solving skills. One of my most recent projects
+                    is an LED matrix inspired by the{' '}
+                    <a href="https://tidbyt.com">TidByt</a> using Raspberry Pi
+                    Pico and CircuitPython. I am in the process of creating my
+                    own LED Matrix layout library in C++ to have more control
+                    over memory management and speed.
                     <br />
                     <br />
-                    In addition to my academic pursuits, I have thrived as an
-                    Advanced Programming Teaching Assistant, honing my skills in
-                    explaining complex concepts and debugging code. To reinforce
-                    my learning, I embarked on personal projects such as
-                    creating a platform for renters to review apartments and
-                    hold landlords accountable in Burlington's captive rental
-                    market. I am a constant learner and am continuously
-                    challenging myself. My current challenge that I’ve been
-                    working on is creating a home monitoring system by using
-                    Arduino’s, microcontrollers, sensors, and servos
-                    interconnected through Bluetooth and WiFi.
+                    My passion lies in AI technologies and their applications in
+                    various domains. In my free time, I enjoy working on
+                    projects and online courses pertaining to the subject, my
+                    latest being a Snake AI using reinforcement learning. These
+                    projects help me apply my theoretical knowledge and skills
+                    to practical challenges. I am also in the process of
+                    obtaining my AWS Certified Solutions Architect Associate
+                    Certification to expand my knowledge on cloud computing and
+                    AI.
                     <br />
                     <br />
-                    While actively maintaining two jobs and juggling my college
-                    commitments, I have remained driven and focused. I am now
-                    eager to leverage my diverse experiences and recent degree
-                    and embark on a rewarding career in the Software Engineering
-                    field. For a detailed overview of my projects, please
-                    continue reading below.
+                    I am a lifelong learner, curious by nature, and a
+                    self-starter, always looking for new challenges and
+                    opportunities to grow. To learn more about my projects,
+                    please continue reading below.
                     <br />
                     */
                 </p>

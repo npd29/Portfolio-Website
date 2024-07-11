@@ -6,7 +6,7 @@ import { signal } from '@preact/signals';
 
 export function Hero() {
     const rainbowMode = signal(false);
-    const particleMode = signal(false);
+    const particleMode = signal(true);
     const pauseAnimation = signal(false);
 
     function toggleSettingsPopup() {
@@ -20,11 +20,11 @@ export function Hero() {
 
     return (
         <div className="hero">
-            <ReactP5Wrapper
+            {/* <ReactP5Wrapper
                 sketch={flow}
                 rainbowMode={rainbowMode}
                 particleMode={particleMode.value}
-            ></ReactP5Wrapper>
+            ></ReactP5Wrapper> */}
             <div id="homeDisplay" className="home">
                 <div id="framerate">
                     <p id="fr"></p>

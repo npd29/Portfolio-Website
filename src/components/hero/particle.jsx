@@ -3,18 +3,16 @@ import { cols, rows, scl, myColor } from './constants';
 let particleOpacity = 255;
 let flowOpacity = 10;
 export class Particle {
-    constructor(p5, width, height) {
+    constructor(p5, width, height, x, y) {
         this.p5 = p5;
         this.width = width;
         this.height = height;
-        this.pos = p5.createVector(
-            Math.random() * this.width,
-            Math.random() * this.height
-        );
+        this.pos = p5.createVector(x, y);
         this.vel = p5.createVector(0, 0);
         this.acc = p5.createVector(0, 0);
         this.maxspeed = 8;
         this.prevPos = this.pos.copy();
+        this.color = myColor;
     }
 
     update() {
@@ -22,6 +20,9 @@ export class Particle {
         this.vel.limit(this.maxspeed);
         this.pos.add(this.vel);
         this.acc.mult(0);
+    }
+    setColor(color) {
+        this.color = color;
     }
 
     follow(vectors) {
@@ -31,7 +32,6 @@ export class Particle {
         var force = vectors[index];
         this.applyForce(force);
     }
-
     applyForce(force) {
         // console.log(this.acc.x, this.acc.y);
 
@@ -39,13 +39,23 @@ export class Particle {
     }
 
     show() {
-        this.p5.stroke(myColor[0], myColor[1], myColor[2], flowOpacity);
+        this.p5.stroke(
+            this.color[0],
+            this.color[1],
+            this.color[2],
+            flowOpacity
+        );
         this.p5.strokeWeight(1);
         this.p5.line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
         this.updatePrev();
     }
     showParticle() {
-        this.p5.stroke(myColor[0], myColor[1], myColor[2], particleOpacity);
+        this.p5.stroke(
+            this.color[0],
+            this.color[1],
+            this.color[2],
+            particleOpacity
+        );
         this.p5.strokeWeight(3);
         this.p5.constructor.point(this.pos.x, this.pos.y);
     }
