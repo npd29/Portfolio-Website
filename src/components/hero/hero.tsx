@@ -1,6 +1,5 @@
-import { ReactP5Wrapper } from 'react-p5-wrapper';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import './hero.css';
-import { flow } from './flowfield';
 import logo from '../../assets/images/NDLogo.png';
 import { signal } from '@preact/signals';
 

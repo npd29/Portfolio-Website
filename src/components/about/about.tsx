@@ -8,7 +8,6 @@ export function About() {
             </div>
             <div className="about">
                 <p>
-                    /*
                     <br />I am a passionate and versatile software engineer with
                     a degree in Computer Science &amp; Information Systems from
                     the University of Vermont. I have a strong foundation in
@@ -48,7 +47,6 @@ export function About() {
                     opportunities to grow. To learn more about my projects,
                     please continue reading below.
                     <br />
-                    */
                 </p>
                 <div className="image-container">
                     <img alt="Me building legos" src={image} />

@@ -14,7 +14,7 @@ export function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img src={linkedinLogo} />
+                    <img src={linkedinLogo} alt="LinkedIn" />
                 </a>
                 <a
                     href="https://github.com/npd29"
