@@ -1,4 +1,9 @@
 .footer {
     display: flex;
-    min-height: 50vh;
+    min-height: 25vh;
+}
+.footerContent {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
