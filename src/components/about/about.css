@@ -1,5 +1,6 @@
 .about {
     display: flex;
+    flex-wrap: wrap;
 }
 .about p {
     margin-right: 2em;
