@@ -1,9 +1,12 @@
 .about {
     display: flex;
     flex-wrap: wrap;
+    padding-top: 1em;
 }
 .about p {
     margin-right: 2em;
+    max-width: 60em;
+    margin-top: 0;
 }
 .about a {
     font-family: 'JetBrains Mono';
@@ -16,6 +19,7 @@
 .image-container {
     display: flex;
     flex-direction: column;
+    width: min-content;
 }
 .image-container p {
     text-align: center;

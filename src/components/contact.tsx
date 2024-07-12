@@ -1,13 +1,15 @@
 import linkedinLogo from '../assets/images/linkedin-logo.png';
 import githubLogo from '../assets/images/github-logo.png';
+import { SectionHeader } from './section-header/section-header';
 
 export function Contact() {
     return (
         <div className="content contact">
-            <h2>CONTACT</h2>
-            <h3 className="hint">
-                Feel free to reach out for more information
-            </h3>
+            <SectionHeader
+                title="Contact"
+                description="Feel free to reach out for more information"
+            />
+
             <div className="contact-links">
                 <a
                     href="https://www.linkedin.com/in/noeldesmarais/"

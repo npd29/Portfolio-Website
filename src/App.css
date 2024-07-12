@@ -60,11 +60,7 @@ h2 {
     margin-top: 0;
     font-weight: 500;
 }
-@media (min-width: 768px) {
-    h2 {
-        font-size: 3em;
-    }
-}
+
 .overlay {
     rotate: 60deg;
     width: 100vw;
@@ -173,19 +169,6 @@ body {
     padding: 10vh 5vw;
 }
 
-.heading-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.heading-container h2 {
-    margin: 0;
-}
-.heading-container h3 {
-    margin: 0;
-    font-weight: normal;
-    margin-bottom: 5em;
-}
 .gradient {
     background: linear-gradient(130deg, var(--ltblue) 0%, var(--pink) 100%);
 }
@@ -446,4 +429,25 @@ canvas {
 }
 .hint {
     opacity: 50%;
+}
+@media (max-width: 900px) {
+    .name {
+        padding: 0.5em;
+    }
+    .name h1 {
+        font-size: 3em;
+        letter-spacing: 0;
+    }
+    .name h2 {
+        font-size: 1em;
+        text-align: left;
+        margin: 0;
+        padding: 0.5em;
+    }
+    h1 {
+        font-size: 5vw;
+    }
+    h2 {
+        font-size: 3em;
+    }
 }

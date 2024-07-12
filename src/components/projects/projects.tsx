@@ -1,5 +1,6 @@
 import { Project, projects } from '../../types';
 import { Popup } from '../popup/popup';
+import { SectionHeader } from '../section-header/section-header';
 import './projects.css';
 import { useState } from 'react';
 
@@ -52,10 +53,10 @@ export function Projects() {
 
     return (
         <div className="content project-section">
-            <div className="heading-container">
-                <h2>PROJECTS</h2>
-                <h3 className="hint">Click on a project to expand</h3>
-            </div>
+            <SectionHeader
+                title="Projects"
+                description="Click on a project to expand"
+            />
             <div id="fullscreen" className="fullscreen"></div>
             {content && (
                 <Popup content={content!} setContent={setContent}></Popup>
