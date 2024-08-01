@@ -10,7 +10,7 @@ function App() {
     return (
         <div className="App">
             <Hero></Hero>
-            <SkillsSection></SkillsSection>
+            {/* <SkillsSection></SkillsSection> */}
             <About></About>
             <Projects></Projects>
             <Contact></Contact>
