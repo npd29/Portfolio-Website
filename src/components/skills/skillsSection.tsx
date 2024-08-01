@@ -1,0 +1,19 @@
+import React from 'react';
+import { Skills } from '../../store';
+import './skills.scss';
+import { SkillIcon } from './skillIcon';
+
+function SkillsSection() {
+    return (
+        <div className="skills">
+            {Object.entries(Skills).map(([key, skill]) => {
+                if (skill.visible) {
+                    return <SkillIcon skillKey={key} skill={skill} />;
+                } else {
+                    return null;
+                }
+            })}
+        </div>
+    );
+}
+export default SkillsSection;

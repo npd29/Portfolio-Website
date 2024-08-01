@@ -1,0 +1,19 @@
+.skills {
+    display: flex;
+    gap: 0.5em;
+    .skill {
+        background-color: #444;
+        border-radius: 4px;
+        height: 4em;
+        display: flex;
+        width: min-content;
+        min-width: 4em;
+        padding: 0.5em;
+
+        .skillIcon {
+            width: 3em;
+            height: 3em;
+            margin: auto;
+        }
+    }
+}

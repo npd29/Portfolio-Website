@@ -1,4 +1,5 @@
-import { Project, projects } from '../../types';
+import { projects } from '../../store';
+import { Project } from '../../types';
 import { Popup } from '../popup/popup';
 import './projects.css';
 import { useState } from 'react';

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import './hero.css';
+import './hero.scss';
 import logo from '../../assets/images/NDLogo.png';
 import { signal } from '@preact/signals';
 
@@ -31,14 +31,7 @@ export function Hero() {
                 <img className="logo" src={logo} alt="Noel Desmarais' Logo" />
                 <div className="name">
                     <h1>NOEL DESMARAIS</h1>
-                    <h2>
-                        Graduate<span className="fullScreen"> - </span>
-                        <br className="mobile" />
-                        Full Stack Software Engineer
-                        <span className="fullScreen"> - </span>
-                        <br className="mobile" />
-                        App Developer
-                    </h2>
+                    <h2>Full Stack Software Developer</h2>
                 </div>
                 {/* <div className="gear-icon" onClick={toggleSettingsPopup}>
                     <img src="images/settings.png" />

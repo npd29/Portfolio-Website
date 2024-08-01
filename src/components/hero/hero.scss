@@ -1,0 +1,73 @@
+.hero {
+    height: calc(100vh - 0.5em);
+    Canvas {
+        max-width: 100vw;
+        overflow: hidden;
+    }
+    .react-p5-wrapper {
+        max-width: 100vw;
+        overflow: hidden;
+    }
+    .home {
+        .name {
+            display: flex;
+            flex-direction: column;
+            bottom: 20vh;
+            h1 {
+            }
+        }
+        .logo {
+            height: 30vh;
+            margin: 20vh auto 15vh;
+        }
+        #homeDisplay {
+            display: flex;
+            flex-direction: column;
+            height: 95vh;
+        }
+    }
+}
+.name {
+}
+.name h2 {
+    font-family: 'JetBrains Mono';
+    margin: auto;
+    font-size: 1.25em;
+    position: relative;
+    opacity: 100%;
+    text-align: center;
+    text-shadow: var(--grey) 0 0 0.25em;
+}
+.name h1 {
+}
+.name br {
+    display: none;
+}
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#framerate {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    opacity: 0.5;
+    display: flex;
+}
+#fr {
+    font-family: 'Integral CF';
+}
+
+.gear-icon {
+    position: absolute;
+    bottom: 2em;
+    right: 2em;
+    cursor: pointer;
+}
+.gear-icon img {
+    width: 2em;
+    opacity: 0.8;
+}

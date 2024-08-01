@@ -71,43 +71,12 @@ h2 {
     left: -50em;
     overflow: hidden;
 }
-.name {
-    display: flex;
-    flex-direction: column;
-    bottom: 20vh;
-}
-.name h2 {
-    font-family: 'JetBrains Mono';
-    margin: auto;
-    font-size: 1.25em;
-    position: relative;
-    opacity: 100%;
-    text-align: center;
-    text-shadow: var(--grey) 0 0 0.25em;
-}
-.name h1 {
-    letter-spacing: 0.5em;
-    margin: auto;
-    font-size: 3vw;
-    text-shadow: var(--grey) 0 0 0.5em;
-}
-.name br {
-    display: none;
-}
+
 p {
     font-family: 'JetBrains Mono';
 }
 h1 {
     font-family: 'Integral CF', sans-serif;
-}
-.logo {
-    height: 30vh;
-    margin: 20vh auto 15vh;
-}
-#homeDisplay {
-    display: flex;
-    flex-direction: column;
-    height: 95vh;
 }
 
 body {
@@ -234,34 +203,7 @@ body {
 .resume:hover {
     background: var(--teal);
 }
-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
 
-#framerate {
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
-    opacity: 0.5;
-    display: flex;
-}
-#fr {
-    font-family: 'Integral CF';
-}
-
-.gear-icon {
-    position: absolute;
-    bottom: 2em;
-    right: 2em;
-    cursor: pointer;
-}
-.gear-icon img {
-    width: 2em;
-    opacity: 0.8;
-}
 /* Styles for the settings popup */
 
 .settings-popup h2 {
