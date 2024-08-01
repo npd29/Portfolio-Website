@@ -18,7 +18,7 @@
                 offset="0%"
             />
             <stop
-                stopColor='#366994'
+                stop-color='#366994'
                 offset="100%"
             />
         </linearGradient>
@@ -30,11 +30,11 @@
             id="b"
         >
             <stop
-                stopColor='#FFE052'
+                stop-color='#FFE052'
                 offset="0%"
             />
             <stop
-                stopColor='#FFC331'
+                stop-color='#FFC331'
                 offset="100%"
             />
         </linearGradient>

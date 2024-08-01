@@ -174,12 +174,12 @@ export const Skills = {
     swift: {
         name: 'Swift',
         importance: 3,
-        visible: false
+        visible: true
     },
     html: {
         name: 'HTML',
         importance: 3,
-        visible: false
+        visible: true
     },
     css: {
         name: 'CSS',
@@ -189,12 +189,12 @@ export const Skills = {
     javascript: {
         name: 'JavaScript',
         importance: 3,
-        visible: false
+        visible: true
     },
     php: {
         name: 'PHP',
         importance: 2,
-        visible: false
+        visible: true
     },
     sql: {
         name: 'SQL',
@@ -204,27 +204,27 @@ export const Skills = {
     azure: {
         name: 'Azure',
         importance: 2,
-        visible: false
+        visible: true
     },
     git: {
         name: 'Git',
         importance: 3,
-        visible: false
+        visible: true
     },
     aws: {
         name: 'AWS',
         importance: 2,
-        visible: false
+        visible: true
     },
     typescript: {
         name: 'TypeScript',
         importance: 2,
-        visible: false
+        visible: true
     },
     react: {
         name: 'React',
         importance: 2,
-        visible: false
+        visible: true
     },
     x86: {
         name: 'X86 Assembly',
