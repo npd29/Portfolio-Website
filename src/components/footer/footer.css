@@ -1,4 +1,11 @@
 .footer {
     display: flex;
-    min-height: 50vh;
+    min-height: 20vh;
+    border-bottom: 1em solid var(--grey);
+}
+.footerContent {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

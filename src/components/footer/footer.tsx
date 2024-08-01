@@ -1,8 +1,12 @@
+import './footer.css';
+
 export function Footer() {
     return (
         <div className="footer">
-            <p>Noel Desmarais</p>
-            <p>July 2024</p>
+            <div className="footerContent">
+                <p>Noel Desmarais</p>
+                <p>July 2024</p>
+            </div>
         </div>
     );
 }

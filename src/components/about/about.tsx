@@ -1,15 +1,14 @@
 import image from '../../assets/images/lego.jpg';
+import { SectionHeader } from '../section-header/section-header';
 import './about.css';
 export function About() {
     return (
         <div className="content gradient">
-            <div className="heading-container">
-                <h2>ABOUT</h2>
-            </div>
+            <SectionHeader title={'About'} />
             <div className="about">
                 <p>
-                    <br />I am a passionate and versatile software engineer with
-                    a degree in Computer Science &amp; Information Systems from
+                    I am a passionate and versatile software engineer with a
+                    degree in Computer Science &amp; Information Systems from
                     the University of Vermont. I have a strong foundation in
                     C++, Java, Python, which I gained while working as an
                     Advanced Programming Teaching Assistant. There, I also
