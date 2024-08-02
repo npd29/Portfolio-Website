@@ -6,7 +6,7 @@ export var particleMode = false;
 export var inc = 0.1;
 
 export let scl = 20;
-export let fr;
+// export let fr;
 export let particles = [];
 export let flowfield = [];
 export let pixels = [];
@@ -17,7 +17,7 @@ export var delta = 1;
 export var stopAnimation = false;
 export let particleOpacity = 255;
 export let flowOpacity = 10;
-export var rainbowInterval;
+// export var rainbowInterval;
 // Add event listeners to the radio buttons
 // const particleRadio = document.getElementById('particleRadio');
 // const rainbowToggle = document.getElementById('rainbowToggle');
