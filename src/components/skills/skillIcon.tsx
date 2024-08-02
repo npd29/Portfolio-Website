@@ -1,10 +1,4 @@
-import React, {
-    lazy,
-    LazyExoticComponent,
-    Suspense,
-    useEffect,
-    useState
-} from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { Skill } from '../../types';
 
 type SkillProps = {
@@ -12,30 +6,36 @@ type SkillProps = {
     skill: Skill;
 };
 
-const importSkillComponent = (
-    key: string
-): LazyExoticComponent<React.FC<any>> => {
-    return lazy(() => import(`../../components/icons/${key}.svg`));
-};
-
 export function SkillIcon({ skillKey, skill }: SkillProps) {
-    const [SkillComponent, setSkillComponent] = useState<LazyExoticComponent<
-        React.FC<any>
-    > | null>(null);
+    const [svgURL, setSvgURL] = useState<string>('');
+    const [hovering, setHovering] = useState<boolean>(false);
 
     useEffect(() => {
-        const loadComponent = () => {
-            const component = importSkillComponent(skillKey);
-            setSkillComponent(() => component);
+        const loadSVG = () => {
+            const url = new URL(`../icons/${skillKey}.svg`, import.meta.url)
+                .href;
+            setSvgURL(url);
         };
-        loadComponent();
+        loadSVG();
     }, [skillKey]);
 
     return (
-        <div className="skill" key={skillKey}>
-            <Suspense fallback={<div>Loading...</div>}>
-                {SkillComponent && <SkillComponent />}
-            </Suspense>
+        <div
+            onMouseEnter={() => setHovering(true)}
+            onMouseLeave={() => setHovering(false)}
+            className="skill"
+            key={skillKey}
+        >
+            {svgURL ? (
+                <img
+                    // style={!hovering ? { filter: 'grayscale(1)' } : undefined}
+                    src={svgURL}
+                    className="skill-icon"
+                    alt={skill.name}
+                />
+            ) : (
+                <div>Loading...</div>
+            )}
             <h3>{skill.name}</h3>
         </div>
     );
