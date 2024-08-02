@@ -63,6 +63,7 @@
         "file-loader": "^6.2.0",
         "jsdom": "^24.1.1",
         "svg-url-loader": "^8.0.0",
+        "typescript": "^5.5.4",
         "vitest": "^2.0.5"
     }
 }
