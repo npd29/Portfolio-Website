@@ -1,4 +1,4 @@
 <footer>
     <p>Noel Desmarais</p>
-    <p>October 2023</p>
+    <p>July 2024</p>
 </footer>

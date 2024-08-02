@@ -1,40 +1,26 @@
-.about{
-    flex-direction: column;
+.about {
+	flex-direction: column;
 }
-.about p{
-    font-size: smaller;
+.about p {
+	font-size: smaller;
 }
-.imageDiv img{
-    width: 60vw;
-    margin: auto;
+.imageDiv img {
+	width: 60vw;
+	margin: auto;
 }
-.imageDiv p{
-    margin: .5em auto auto;
+.imageDiv p {
+	margin: 0.5em auto auto;
 }
-.project{
-    height: auto;
-    padding: 0 1em;
-    margin: 1em 0;
-    font-size: smaller;
+.project {
+	height: auto;
+	padding: 0 1em;
+	margin: 1em 0;
+	font-size: smaller;
 }
-.projectLinks{
-    margin-bottom: 2em;
+.projectLinks {
+	margin-bottom: 2em;
 }
-h2{
-    opacity: 40%;
-    font-size: 12vw;
+h2 {
+	opacity: 40%;
+	font-size: 12vw;
 }
-.name h1{
-    letter-spacing: .2em;
-    font-size: 5vw;
-}
-.name h2{
-    font-size: smaller;
-}
-.name br{
-    display: unset;
-}
-.name span{
-    display: none;
-}
-
