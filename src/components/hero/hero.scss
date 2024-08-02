@@ -9,11 +9,29 @@
         overflow: hidden;
     }
     .home {
+        display: flex;
+        flex-direction: column;
         .name {
             display: flex;
             flex-direction: column;
             bottom: 20vh;
             h1 {
+                letter-spacing: 0.3em;
+                margin: auto;
+                font-size: 4em;
+                text-shadow: var(--grey) 0 0 0.5em;
+                text-align: center;
+            }
+            h2 {
+                margin: auto;
+                font-size: 1.25em;
+                position: relative;
+                opacity: 70%;
+                letter-spacing: 1em;
+                margin-top: 1.1em;
+                text-align: center;
+                color: #888;
+                text-shadow: var(--grey) 0 0 0.25em;
             }
         }
         .logo {
@@ -26,22 +44,6 @@
             height: 95vh;
         }
     }
-}
-.name {
-}
-.name h2 {
-    font-family: 'JetBrains Mono';
-    margin: auto;
-    font-size: 1.25em;
-    position: relative;
-    opacity: 100%;
-    text-align: center;
-    text-shadow: var(--grey) 0 0 0.25em;
-}
-.name h1 {
-}
-.name br {
-    display: none;
 }
 canvas {
     position: absolute;

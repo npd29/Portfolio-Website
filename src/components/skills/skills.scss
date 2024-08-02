@@ -1,6 +1,13 @@
 .skills {
     display: flex;
+    margin: 2em 0;
     gap: 0.5em;
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     .skill {
         background-color: #444;
         border-radius: 4px;
