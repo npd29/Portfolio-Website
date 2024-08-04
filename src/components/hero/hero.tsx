@@ -4,6 +4,7 @@ import logo from '../../assets/images/NDLogo.png';
 import { signal } from '@preact/signals';
 import { ReactP5Wrapper } from 'react-p5-wrapper';
 import { flow } from './flowfield';
+import { Button } from '@mui/material';
 
 export function Hero() {
     const rainbowMode = signal(false);
@@ -23,12 +24,21 @@ export function Hero() {
         <div className="hero">
             <ReactP5Wrapper
                 sketch={flow}
-                rainbowMode={rainbowMode}
+                rainbowMode={rainbowMode.value}
                 particleMode={particleMode.value}
             ></ReactP5Wrapper>
             <div id="homeDisplay" className="home">
                 <div id="framerate">
                     <p id="fr"></p>
+                    <Button
+                        id="rainbowmode"
+                        onClick={() => {
+                            rainbowMode.value = !rainbowMode.value;
+                            console.log(rainbowMode.value);
+                        }}
+                    >
+                        Rainbow
+                    </Button>
                 </div>
                 <img className="logo" src={logo} alt="Noel Desmarais' Logo" />
                 <div className="name">

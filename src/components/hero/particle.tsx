@@ -17,6 +17,7 @@ export class Particle {
     color: number[];
     constructor(
         p5: p5,
+        color: number[],
         width: number,
         height: number,
         rows: number,
@@ -34,7 +35,7 @@ export class Particle {
         this.acc = p5.createVector(0, 0);
         this.maxspeed = 8;
         this.prevPos = this.pos.copy();
-        this.color = myColor;
+        this.color = color;
     }
 
     update() {
