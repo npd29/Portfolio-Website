@@ -1,0 +1,26 @@
+.banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 3em;
+    padding-left: 1em;
+    background-color: rgba(255, 0, 0, 0.5);
+    z-index: 1000;
+
+    a {
+        font-family: 'JetBrains Mono', monospace;
+    }
+    button {
+        right: 1em;
+        background-color: transparent;
+        &:hover {
+            background-color: transparent;
+            img {
+                filter: invert(1);
+            }
+        }
+    }
+}
