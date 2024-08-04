@@ -2,6 +2,8 @@
 import './hero.scss';
 import logo from '../../assets/images/NDLogo.png';
 import { signal } from '@preact/signals';
+import { ReactP5Wrapper } from 'react-p5-wrapper';
+import { flow } from './flowfield';
 
 export function Hero() {
     const rainbowMode = signal(false);
@@ -19,11 +21,11 @@ export function Hero() {
 
     return (
         <div className="hero">
-            {/* <ReactP5Wrapper
+            <ReactP5Wrapper
                 sketch={flow}
                 rainbowMode={rainbowMode}
                 particleMode={particleMode.value}
-            ></ReactP5Wrapper> */}
+            ></ReactP5Wrapper>
             <div id="homeDisplay" className="home">
                 <div id="framerate">
                     <p id="fr"></p>
