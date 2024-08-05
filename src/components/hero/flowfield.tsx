@@ -2,7 +2,7 @@ import { Particle } from './particle';
 import { SketchProps } from 'react-p5-wrapper';
 import { scl, numParticles, inc } from './constants';
 import './utilities';
-import { P5CanvasInstance, ReactP5Wrapper } from '@p5-wrapper/react';
+import { P5CanvasInstance } from '@p5-wrapper/react';
 import { Signal, signal } from '@preact/signals';
 
 type MySketchProps = SketchProps & {
@@ -18,9 +18,9 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
     let delta = 0.000006;
     let rows: number, cols: number;
     let flowfield: any[] = [];
-    let cleanfield: any[] = [];
+    // let cleanfield: any[] = [];
     let particles: any[] = [];
-    let cleanup: any[] = [];
+    // let cleanup: any[] = [];
     let zoff = 0;
     let z1off = -100 * delta;
     let particleMode = signal(false);
@@ -57,9 +57,9 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
         cols = Math.floor(width / scl);
         rows = Math.floor(height / scl);
         flowfield = new Array(cols * rows);
-        cleanfield = new Array(cols * rows);
+        // cleanfield = new Array(cols * rows);
         particles = [];
-        cleanup = [];
+        // cleanup = [];
         p5.background(particleMode.value ? '#222' : '#222');
         p5.noiseDetail(
             particleMode.value ? 1 : 4,
@@ -72,10 +72,10 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
                 new Particle(p5, width, height, rows, cols, xVal, yVal)
             );
             // temp.color = [34, 34, 34, 10];
-            cleanup.push(
-                new Particle(p5, width, height, rows, cols, xVal, yVal)
-            );
-            cleanup[x].color = [255, 255, 255, 50];
+            // cleanup.push(
+            //     new Particle(p5, width, height, rows, cols, xVal, yVal)
+            // );
+            // cleanup[x].color = [255, 255, 255, 50];
         }
         setTimeout(() => {
             delayPassed = true;
@@ -102,7 +102,7 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
                     v.setMag(particleMode.value ? 0.2 : 10);
                     v1.setMag(particleMode.value ? 0.2 : 10);
                     flowfield[index] = v;
-                    cleanfield[index] = v1;
+                    // cleanfield[index] = v1;
                     xoff += inc;
                 }
                 yoff += inc;
@@ -113,18 +113,18 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
                 particles[i].follow(flowfield);
                 particles[i].update();
                 particles[i].edges();
-                if (delayPassed) {
-                    cleanup[i].follow(cleanfield);
-                    cleanup[i].update();
-                    cleanup[i].edges();
-                }
+                // if (delayPassed) {
+                //     cleanup[i].follow(cleanfield);
+                //     cleanup[i].update();
+                //     cleanup[i].edges();
+                // }
                 if (particleMode.value) {
                     particles[i].show();
                 } else {
                     particles[i].show();
-                    if (delayPassed) {
-                        cleanup[i].show();
-                    }
+                    // if (delayPassed) {
+                    //     cleanup[i].show();
+                    // }
                 }
             }
         }
