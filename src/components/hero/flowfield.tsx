@@ -15,16 +15,18 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
     let width = window.innerWidth;
     let height = window.innerHeight;
     let z = 1;
-    let delta = 0.000006;
+    let delta = 0.00001; //lower results in vectors being more consistant
     let rows: number, cols: number;
     let flowfield: any[] = [];
     // let cleanfield: any[] = [];
     let particles: any[] = [];
     // let cleanup: any[] = [];
     let zoff = 0;
-    let z1off = -100 * delta;
+    // let z1off = -100 * delta;
     let particleMode = signal(false);
     let delayPassed = false;
+    let explore = 4; // higher will result in particles following less
+    let angleRange = Math.PI * 2 * 1.5;
 
     p5.updateWithProps = (props) => {
         if (props.rainbowMode) {
@@ -57,9 +59,7 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
         cols = Math.floor(width / scl);
         rows = Math.floor(height / scl);
         flowfield = new Array(cols * rows);
-        // cleanfield = new Array(cols * rows);
         particles = [];
-        // cleanup = [];
         p5.background(particleMode.value ? '#222' : '#222');
         p5.noiseDetail(
             particleMode.value ? 1 : 4,
@@ -71,11 +71,6 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
             particles.push(
                 new Particle(p5, width, height, rows, cols, xVal, yVal)
             );
-            // temp.color = [34, 34, 34, 10];
-            // cleanup.push(
-            //     new Particle(p5, width, height, rows, cols, xVal, yVal)
-            // );
-            // cleanup[x].color = [255, 255, 255, 50];
         }
         setTimeout(() => {
             delayPassed = true;
@@ -90,48 +85,26 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
                 xoff = 0;
                 for (let x = 0; x < cols; x++) {
                     const index = x + y * cols;
-                    const angle =
-                        p5.noise(xoff, yoff, zoff) * Math.PI * 2 * 1.5;
-                    const angle1 =
-                        p5.noise(xoff, yoff, zoff) * Math.PI * 2 * 1.5;
+                    const angle = p5.noise(xoff, yoff, zoff) * angleRange;
                     const v = p5.createVector(Math.cos(angle), Math.sin(angle));
-                    const v1 = p5.createVector(
-                        Math.cos(angle1),
-                        Math.sin(angle1)
-                    );
-                    v.setMag(particleMode.value ? 0.2 : 10);
-                    v1.setMag(particleMode.value ? 0.2 : 10);
+                    v.setMag(particleMode.value ? 0.2 : explore);
                     flowfield[index] = v;
-                    // cleanfield[index] = v1;
                     xoff += inc;
                 }
                 yoff += inc;
                 zoff += z * delta;
-                z1off += z * delta;
             }
             for (let i = 0; i < particles.length; i++) {
                 particles[i].follow(flowfield);
                 particles[i].update();
                 particles[i].edges();
-                // if (delayPassed) {
-                //     cleanup[i].follow(cleanfield);
-                //     cleanup[i].update();
-                //     cleanup[i].edges();
-                // }
-                if (particleMode.value) {
-                    particles[i].show();
-                } else {
-                    particles[i].show();
-                    // if (delayPassed) {
-                    //     cleanup[i].show();
-                    // }
-                }
+                particles[i].show();
             }
         }
     };
 
     // Initialize the setup function on window resize
     if (window.screen.width > 780) {
-        // window.onresize = p5.setup;
+        window.onresize = p5.setup;
     }
 }
