@@ -8,7 +8,14 @@ function SkillsSection() {
         <div className="skills">
             {Object.entries(Skills).map(([key, skill]) => {
                 if (skill.visible) {
-                    return <SkillIcon key={key} skillKey={key} skill={skill} />;
+                    return (
+                        <SkillIcon
+                            key={key}
+                            skillKey={key}
+                            skill={skill}
+                            size={1.5}
+                        />
+                    );
                 } else {
                     return null;
                 }

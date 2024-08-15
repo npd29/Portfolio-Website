@@ -53,7 +53,7 @@ export function About() {
                     <p>
                         8-Year-Old me (left) setting up our robot at the NH
                         FIRST LEGO Robotics competition, my first introduction
-                        to engineering
+                        to engineering.
                     </p>
                 </div>
             </div>
