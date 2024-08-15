@@ -16,6 +16,7 @@ export function Projects() {
             document.body.style.overflowY = 'hidden';
         } else {
             document.body.style.overflowY = 'auto';
+            document.body.style.overflowX = 'hidden';
         }
     }, [showPopup]);
 

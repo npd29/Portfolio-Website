@@ -40,18 +40,22 @@ export function Popup({ project, showPopup }: PopupProps) {
                             {project.description}
                         </p>
                         <div className="projectLinks">
-                            <a
-                                className="projectLink codeLink"
-                                href={project.githubLink}
-                            >
-                                &lt;/View Code&gt;
-                            </a>
-                            <a
-                                className="projectLink"
-                                href={project.finishedLink}
-                            >
-                                View Project
-                            </a>
+                            {project.githubLink && (
+                                <a
+                                    className="projectLink codeLink"
+                                    href={project.githubLink}
+                                >
+                                    &lt;/View Code&gt;
+                                </a>
+                            )}
+                            {project.finishedLink && (
+                                <a
+                                    className="projectLink"
+                                    href={project.finishedLink}
+                                >
+                                    View Project
+                                </a>
+                            )}
                         </div>
                     </div>
                 </div>
