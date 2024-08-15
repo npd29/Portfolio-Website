@@ -77,7 +77,7 @@ export const projects: Project[] = [
     {
         name: 'Evolutionary Robotics Simulated Robot',
         description:
-            "Under the guidance of Professor Josh Bongard, I actively participated in a project aimed at enhancing the locomotion capabilities of a simulated robot in various environments. By employing evolutionary algorithms, I focused on evolving a neural network to achieve optimal performance. Throughout the semester, I explored different strategies and techniques to continually improve the robot's adaptability and efficiency.",
+            "Under the guidance of Professor Josh Bongard, I worked on a project to evolve the locomotion capabilities of a simulated robot in various environments. Through evolutionary algorithms, I evolved a neural network to achieve optimal performance. Throughout the semester, I explored different strategies and techniques to continually improve the robot's adaptability and efficiency.",
         languages: ['python'],
         tools: ['PyroSim', 'PyBullet', 'Matplotlib'],
         date: undefined,
