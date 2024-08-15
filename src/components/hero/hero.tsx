@@ -21,10 +21,10 @@ export function Hero() {
         }));
     }, []);
     useEffect(() => {
-        setCurrentSettings((prevSettings) => ({
-            ...prevSettings,
+        setCurrentSettings(() => ({
+            ...defaultSettings[animationMode],
             play: true,
-            ...defaultSettings[animationMode]
+            rainbowMode: currentSettings.rainbowMode
         }));
     }, [animationMode]);
 

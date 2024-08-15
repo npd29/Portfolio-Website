@@ -61,12 +61,7 @@ export class Particle {
     }
 
     show(color: number[]) {
-        this.p5.blendMode(this.p5.BLEND);
-        this.p5.stroke(34, 34, 34, color[3]);
-        this.p5.point(this.prevPos.x, this.prevPos.y);
-
         this.p5.stroke(color[0], color[1], color[2], color[3]);
-
         this.p5.strokeWeight(1);
         this.p5.line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
         this.updatePrev();

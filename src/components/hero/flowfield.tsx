@@ -33,10 +33,7 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
     let myColor = [0, 255, 255, opacity];
     let dontDraw = true;
     let colorDelta = 1;
-    const interval1 = setInterval(loopZ, 30000); // bounce every 30 seconds
-    const interval2 = setInterval(() => {
-        changeColor();
-    }, 250);
+
     function changeColor() {
         if (rainbowMode) {
             myColor = [
@@ -59,6 +56,8 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
         play = settings.play ?? true;
         rainbowMode = settings.rainbowMode ?? false;
         myColor[3] = settings.color[3];
+        myMode == Mode.FLOW && setInterval(loopZ, 30000); // bounce every 30 seconds
+        rainbowMode && setInterval(changeColor, 250);
         setTimeout(() => {
             p5 && p5.background('#222');
         }, 100); // 10 seconds delay
@@ -71,9 +70,7 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
     //         ' particles';
     // }
     function loopZ() {
-        if (myMode == Mode.FLOW) {
-            z *= -1;
-        }
+        z *= -1;
     }
 
     p5.setup = () => {
@@ -87,6 +84,7 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
         particles = [];
         p5.background('#222');
         p5.noiseDetail(settings.noiseDetail, settings.falloff);
+
         for (let x = 0; x < numParticles; x++) {
             const xVal = Math.random() * width;
             const yVal = Math.random() * height;

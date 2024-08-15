@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import TuneIcon from '@mui/icons-material/TuneRounded';
 import './settings.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { defaultSettings } from '../../store';
 import { CloseIcon } from '../icons/close';
 
@@ -28,6 +28,12 @@ export default function AnimationSettings({
 }: SettingsProps) {
     const [showSettings, setShowSettings] = useState(false);
     const [rainbowMode, setRainbowMode] = useState(false);
+    useEffect(() => {
+        updateSettings({
+            ...settings,
+            rainbowMode: rainbowMode
+        });
+    }, [rainbowMode]);
     return (
         <div className="animation-settings">
             {!showSettings && (
@@ -62,10 +68,6 @@ export default function AnimationSettings({
                                     <Switch
                                         onClick={() => {
                                             setRainbowMode(!rainbowMode);
-                                            updateSettings({
-                                                ...settings,
-                                                rainbowMode: rainbowMode
-                                            });
                                         }}
                                         checked={rainbowMode}
                                     ></Switch>

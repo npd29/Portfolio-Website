@@ -25,9 +25,9 @@ export function Contact() {
                 >
                     <img src={githubLogo} alt="Github.com" />
                 </a>
-                <a className="resume" href="resume10.2.pdf" target="_blank">
+                {/* <a className="resume" href="resume10.2.pdf" target="_blank">
                     View Resume
-                </a>
+                </a> */}
             </div>
         </div>
     );
