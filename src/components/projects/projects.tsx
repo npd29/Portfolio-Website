@@ -20,7 +20,6 @@ export function Projects() {
                     <h3>{project.name}</h3>
                     <div className="languages">
                         {project.languages.map((language, key) => {
-                            console.log(language);
                             return language in Skills ? (
                                 <SkillIcon
                                     key={key}
@@ -81,7 +80,6 @@ export function Projects() {
                                 <h3>{project.name}</h3>
                                 <div className="languages">
                                     {project.languages.map((language, key) => {
-                                        console.log(language);
                                         return language in Skills ? (
                                             <SkillIcon
                                                 key={key}

@@ -39,10 +39,7 @@ export default function AnimationSettings({
             {!showSettings && (
                 <IconButton
                     aria-label="settings"
-                    onClick={() => (
-                        console.log('clicked', showSettings),
-                        setShowSettings(!showSettings)
-                    )}
+                    onClick={() => setShowSettings(!showSettings)}
                 >
                     <TuneIcon />
                 </IconButton>
@@ -78,7 +75,7 @@ export default function AnimationSettings({
                             Mode
                             <RadioGroup
                                 aria-labelledby="demo-radio-buttons-group-label"
-                                defaultValue={defaultSettings[Mode.FLOW]}
+                                defaultValue={mode}
                                 name="radio-buttons-group"
                                 onChange={(choice) => {
                                     setMode(
@@ -89,7 +86,7 @@ export default function AnimationSettings({
                                 {Object.keys(defaultSettings).map((key) => (
                                     <FormControlLabel
                                         key={key}
-                                        value={Number(key)}
+                                        value={key}
                                         control={<Radio />}
                                         label={Mode[key as keyof typeof Mode]}
                                     />

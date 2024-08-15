@@ -52,7 +52,6 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
     p5.updateWithProps = (props) => {
         myMode = props.mode;
         settings = props.settings;
-        console.log('settings', settings);
         play = settings.play ?? true;
         rainbowMode = settings.rainbowMode ?? false;
         myColor[3] = settings.color[3];
