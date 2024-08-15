@@ -1,4 +1,4 @@
-export var opacity = 10;
+export var opacity = 100;
 
 export var rainbowMode = false;
 export var myColor = [0, 255, 255, opacity];

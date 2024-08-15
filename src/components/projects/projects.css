@@ -78,25 +78,27 @@
 }
 
 .projectLink {
-    display: inline-block;
+    display: flex;
     text-decoration: none;
-    background: var(--teal);
-    color: var(--grey);
-    border-radius: 5px;
+    color: var(--teal);
+    border: var(--teal) solid 1px;
+    border-radius: 4px;
     padding: 0.5em 1em;
     margin-top: 1em;
     transition: background 0.5s ease;
+    width: max-content;
 }
 
 .projectLink:hover {
-    background: rgb(100, 255, 250);
-    transform: translateY(-0.25em);
+    background: rgba(0, 255, 150, 0.5);
+    color: var(--grey);
 }
 
 .languages {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1em;
+    gap: 0.5em;
 }
 .tools {
     font-family: 'JetBrains Italic';

@@ -1,8 +1,6 @@
 import 'p5';
-import { scl, myColor } from './constants';
+import { scl } from './constants';
 import p5 from 'p5';
-let particleOpacity = 255;
-let flowOpacity = 10;
 export class Particle {
     p5: p5;
     width: number;
@@ -12,11 +10,13 @@ export class Particle {
     pos: p5.Vector;
     vel: p5.Vector;
     acc: p5.Vector;
-    maxspeed: number;
+    maxSpeed: number;
     prevPos: p5.Vector;
     color: number[];
     constructor(
         p5: p5,
+        color: number[],
+        maxSpeed: number,
         width: number,
         height: number,
         rows: number,
@@ -32,14 +32,14 @@ export class Particle {
         this.pos = p5.createVector(x, y);
         this.vel = p5.createVector(0, 0);
         this.acc = p5.createVector(0, 0);
-        this.maxspeed = 8;
+        this.maxSpeed = maxSpeed;
         this.prevPos = this.pos.copy();
-        this.color = myColor;
+        this.color = color;
     }
 
     update() {
         this.vel.add(this.acc);
-        this.vel.limit(this.maxspeed);
+        this.vel.limit(this.maxSpeed);
         this.pos.add(this.vel);
         this.acc.mult(0);
     }
@@ -60,25 +60,20 @@ export class Particle {
         this.acc.add(force);
     }
 
-    show() {
-        this.p5.stroke(
-            this.color[0],
-            this.color[1],
-            this.color[2],
-            flowOpacity
-        );
+    show(color: number[]) {
+        this.p5.blendMode(this.p5.BLEND);
+        this.p5.stroke(34, 34, 34, color[3]);
+        this.p5.point(this.prevPos.x, this.prevPos.y);
+
+        this.p5.stroke(color[0], color[1], color[2], color[3]);
+
         this.p5.strokeWeight(1);
         this.p5.line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
         this.updatePrev();
     }
-    showParticle() {
-        this.p5.stroke(
-            this.color[0],
-            this.color[1],
-            this.color[2],
-            particleOpacity
-        );
-        this.p5.strokeWeight(3);
+    showParticle(color: number[]) {
+        this.p5.stroke(color[0], color[1], color[2], color[3]);
+        this.p5.strokeWeight(5);
         this.p5.point(this.pos.x, this.pos.y);
     }
 

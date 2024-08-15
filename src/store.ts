@@ -1,12 +1,27 @@
 import { LazyExoticComponent, ReactComponentElement } from 'react';
-import { Project, SkillProps, Skill } from './types';
+import { Project, SkillProps, Skill, Mode, Settings } from './types';
 import React, { lazy, Suspense } from 'react';
+import { purple } from '@mui/material/colors';
+import { createTheme } from '@mui/material';
 
 export const projects: Project[] = [
     {
+        name: 'Midwest Road Useage Charge Pilot',
+        description:
+            'I worked with the Kansas and Minnesota Department of Transportation to create multiple web applications to help them implement their Road Usage Charge Pilot. The pilot program was designed to test the feasibility of a road usage charge as a replacement for the gas tax. The web applications I created were used to collect data from participants, provide information about the program, and help participants track their mileage and fuel consumption. I used TypeScript, React, and CSS to build the front-end of the applications and Azure functions for gathering and transforming data. I also used Python to create scripts to identify any outliers in the data that might indicate issues in the data collection process. ',
+        languages: ['typescript', 'react', 'css', 'python'],
+        date: undefined,
+        imageAddress: undefined,
+        finishedLink:
+            'https://summary.midwestruc.net/?id=b7ca53ef-8fbf-492f-b68c-c3a228fa22ed',
+        caption:
+            'Created multiple web apps to help the Kansas Department of Transportation implement their Road Usage Charge Pilot.',
+        isVisible: true
+    },
+    {
         name: 'TidByt-Inspired LED Matrix',
         description:
-            "After seeing an advertisement for a LED Display that shows various screens such as the time, current weather conditions, and fun animations. I decided it would be a fun challenge to try to build one myself. I used a Raspberry Pi Pico to control the project.\r\n\r\nI also noticed there weren't many resources or guides available to help with a project like this so I started writing up instructions on how to replicate my project and put them on GitHub. This is a current project and I am continually updating it.",
+            "After seeing an advertisement for a LED Display that shows various screens such as the time, current weather conditions, and fun animations. I decided it would be a fun challenge to try to build one myself. I used a Raspberry Pi Pico to control the project.\r\nI also noticed there weren't many resources or guides available to help with a project like this so I started writing up instructions on how to replicate my project and put them on GitHub. This is a current project and I am continually updating it.",
         languages: ['python', 'cpp'],
         tools: ['Git', 'API Implementation', 'Image Processing'],
         date: undefined,
@@ -20,7 +35,7 @@ export const projects: Project[] = [
     {
         name: 'Fall Prevention Education iOS Application',
         description:
-            "As part of a collaborative team of four, I contributed to the development of an iOS application for the University of Vermont Medical Center. The objective given to us by the medical professionals, was to educate individuals at risk of falling and empower them to adopt safer practices. Using SwiftUI, we blended design and function    component: ReactComponentElement<any, any>;ctors to ensure the app's features were tailored to meet the needs of the end-users.\r\n<br><br>\r\nTo enhance the app's functionality, we implemented efficient parsing of user data and leveraged locally-stored JSON files for seamless storage and retrieval. Throughout the project, we used an Agile approach, working closely with our team to manage workloads effectively and deliver high-quality results within the allocated semester timeframe.",
+            "As part of a collaborative team of four, I contributed to the development of an iOS application for the University of Vermont Medical Center. The objective given to us by the medical professionals, was to educate individuals at risk of falling and empower them to adopt safer practices. Using SwiftUI, we blended design and function    component: ReactComponentElement<any, any>;ctors to ensure the app's features were tailored to meet the needs of the end-users.\r\nTo enhance the app's functionality, we implemented efficient parsing of user data and leveraged locally-stored JSON files for seamless storage and retrieval. Throughout the project, we used an Agile approach, working closely with our team to manage workloads effectively and deliver high-quality results within the allocated semester timeframe.",
         languages: ['swift'],
         tools: ['SwiftUI', 'JSON Parsing', 'Agile Workflow'],
         date: '2022-12-01',
@@ -34,7 +49,7 @@ export const projects: Project[] = [
     {
         name: 'RNTR - Apartment Rating Website',
         description:
-            "After going through the difficult process of finding an affordable apartment in Burlington, VT, I came up with an idea for a site that would help to hold landlords accountable in Burlington's captive rental market. I designed and implemented a website that enabled users to rate and review apartments and landlords. Leveraging my skills in HTML, CSS, PHP, and JavaScript, I developed both the front-end and back-end functionalities to ensure a seamless user experience. To enhance the accuracy and reliability of user-provided addresses, I integrated an address standardization API.\r\n<br><br>\r\nTo maximize the website's functionality, I leveraged SQL to execute advanced queries on the underlying database, enabling users to search and filter through the vast repository of apartment and landlord data. Moreover, I devoted efforts to optimize server response times, resulting in improved website performance and enhanced user satisfaction. Additionally, I employed SEO best practices to increase the website's visibility and reach.\r\n<br><br>\r\nUnfortunatly this site is currently decommissioned due to funding limitations.",
+            "After going through the difficult process of finding an affordable apartment in Burlington, VT, I came up with an idea for a site that would help to hold landlords accountable in Burlington's captive rental market. I designed and implemented a website that enabled users to rate and review apartments and landlords. Leveraging my skills in HTML, CSS, PHP, and JavaScript, I developed both the front-end and back-end functionalities to ensure a seamless user experience. To enhance the accuracy and reliability of user-provided addresses, I integrated an address standardization API.\r\nTo maximize the website's functionality, I leveraged SQL to execute advanced queries on the underlying database, enabling users to search and filter through the vast repository of apartment and landlord data. Moreover, I devoted efforts to optimize server response times, resulting in improved website performance and enhanced user satisfaction. Additionally, I employed SEO best practices to increase the website's visibility and reach.\r\nUnfortunatly this site is currently decommissioned due to funding limitations.",
         languages: ['html', 'css', 'php', 'javascript'],
         tools: ['API Implementation'],
         date: undefined,
@@ -48,7 +63,7 @@ export const projects: Project[] = [
     {
         name: 'SG-FECC 2023 Website',
         description:
-            "As the Senior Media & Communications Chair for the Schlesinger Global Family Enterprise Case Competition, a prestigious global business competition focused on family businesses, I identified the need to enhance our online presence. With participants from 27 countries over the past decade, it was crucial to develop a website that accurately represented the competition's scale and prominence.\r\n<br><br>\r\nDrawing on my web development experience, I quickly mastered WordPress to create a professional and visually appealing website for the current year's competition. This ensured both immediate impact and long-term maintainability, providing a seamless user experience for participants, judges, coordinators, and visitors. I also implemented effective search engine optimization (SEO) techniques, resulting in an estimated 300% increase in website traffic. By optimizing the website's search engine ranking, we significantly expanded the competition's global reach and recognition.\r\n<br><br>\r\nIn addition to the website I came up with new ways to promote the competition and engage participants. ",
+            "As the Senior Media & Communications Chair for the Schlesinger Global Family Enterprise Case Competition, a prestigious global business competition focused on family businesses, I identified the need to enhance our online presence. With participants from 27 countries over the past decade, it was crucial to develop a website that accurately represented the competition's scale and prominence.\r\nDrawing on my web development experience, I quickly mastered WordPress to create a professional and visually appealing website for the current year's competition. This ensured both immediate impact and long-term maintainability, providing a seamless user experience for participants, judges, coordinators, and visitors. I also implemented effective search engine optimization (SEO) techniques, resulting in an estimated 300% increase in website traffic. By optimizing the website's search engine ranking, we significantly expanded the competition's global reach and recognition.\r\nIn addition to the website I came up with new ways to promote the competition and engage participants. ",
         languages: ['html', 'css'],
         tools: ['WordPress', 'Adobe Illustrator'],
         date: '2023-01-11',
@@ -76,7 +91,7 @@ export const projects: Project[] = [
     {
         name: 'Custom Compiler',
         description:
-            "For my final project in the course on compiler design and construction, I focused on extending the language's capabilities by implementing simple dataclasses. This project was a culmination of the various topics covered throughout the course, which provided a comprehensive understanding of the compilation process.\r\n<br><br>\r\nThroughout the semester, I explored the representation and analysis of code and how to translate a high-level programming language into Intel x86 assembly language. We learned about essential concepts such as register allocation, static type checking, and handling mutable data. The course also emphasized the significance of garbage collection for efficient memory management in compiled languages.\r\n<br><br>\r\nBy extending the language with dataclasses, I not only demonstrated my proficiency in implementing new language features but also showcased my grasp of the entire compilation process. This project solidified my knowledge of code analysis, code generation, and the crucial role of language features in creating powerful and expressive programming languages.",
+            "For my final project in the course on compiler design and construction, I focused on extending the language's capabilities by implementing simple dataclasses. This project was a culmination of the various topics covered throughout the course, which provided a comprehensive understanding of the compilation process.\r\nThroughout the semester, I explored the representation and analysis of code and how to translate a high-level programming language into Intel x86 assembly language. We learned about essential concepts such as register allocation, static type checking, and handling mutable data. The course also emphasized the significance of garbage collection for efficient memory management in compiled languages.\r\nBy extending the language with dataclasses, I not only demonstrated my proficiency in implementing new language features but also showcased my grasp of the entire compilation process. This project solidified my knowledge of code analysis, code generation, and the crucial role of language features in creating powerful and expressive programming languages.",
         languages: ['cpp', 'x86'],
         tools: [],
         date: undefined,
@@ -90,7 +105,7 @@ export const projects: Project[] = [
     {
         name: 'Automated Plant Care System',
         description:
-            'After failing to keep my plants alive, I used an Arduino Nano and an ESP8266 module, along with sensors for soil moisture, light, and air quality, to automate the process of watering plants and create a more nurturing environment.\r\n\r\nBy continuously monitoring important factors like soil moisture, light levels, and air quality, my system provided valuable insights into the specific needs of my plants. With the help of a peristaltic pump, the system automatically watered the plants, ensuring they received the appropriate amount of water at the right times.\r\n\r\nThis project allowed me to explore the integration of hardware components and programming skills, resulting in a practical solution to improve plant care. In the end, I have less dead plants!',
+            'After failing to keep my plants alive, I used an Arduino Nano and an ESP8266 module, along with sensors for soil moisture, light, and air quality, to automate the process of watering plants and create a more nurturing environment.\r\nBy continuously monitoring important factors like soil moisture, light levels, and air quality, my system provided valuable insights into the specific needs of my plants. With the help of a peristaltic pump, the system automatically watered the plants, ensuring they received the appropriate amount of water at the right times.\r\nThis project allowed me to explore the integration of hardware components and programming skills, resulting in a practical solution to improve plant care. In the end, I have less dead plants!',
         languages: ['cpp', 'python'],
         tools: ['Bluetooth', 'Serial Communication'],
         date: '2023-02-28',
@@ -104,7 +119,7 @@ export const projects: Project[] = [
     {
         name: 'Plants vs. Zombies Recreation',
         description:
-            'For this project, I collaborated with an agile team to recreate the immensely popular game, Plants vs. Zombies, using Python and the Python Arcade library. As part of the team, I played a pivotal role in organizing the program flow and backend development. I focused on designing the structure of the game, ensuring seamless transitions between different states and screens. Additionally, I took charge of implementing the spawning mechanics for zombies, creating algorithms that combined randomness with the timing patterns seen in the original game. This resulted in a challenging and engaging gameplay experience.\r\n<br><br>\r\nAnother significant contribution I made was developing a dynamic system for level progression. I designed a flexible framework that allowed for the easy addition and modification of levels, accommodating three waves of zombies per level, each increasing in difficulty. This approach added replayability and a sense of progression for players. By working on this project, I enhanced my skills in game development, algorithm design, and collaboration.',
+            'For this project, I collaborated with an agile team to recreate the immensely popular game, Plants vs. Zombies, using Python and the Python Arcade library. As part of the team, I played a pivotal role in organizing the program flow and backend development. I focused on designing the structure of the game, ensuring seamless transitions between different states and screens. Additionally, I took charge of implementing the spawning mechanics for zombies, creating algorithms that combined randomness with the timing patterns seen in the original game. This resulted in a challenging and engaging gameplay experience.\r\nAnother significant contribution I made was developing a dynamic system for level progression. I designed a flexible framework that allowed for the easy addition and modification of levels, accommodating three waves of zombies per level, each increasing in difficulty. This approach added replayability and a sense of progression for players. By working on this project, I enhanced my skills in game development, algorithm design, and collaboration.',
         languages: ['python'],
         tools: ['Python Arcade'],
         date: undefined,
@@ -119,7 +134,7 @@ export const projects: Project[] = [
     {
         name: 'Image Manipulation Program',
         description:
-            "I developed an image manipulation program that offers a wide range of features, including mirroring, color inversion, grayscale conversion, and the creation of kaleidoscope effects. Leveraging the capabilities of C++ for fast user input handling, I integrated Python and OpenCV to execute these transformations. The program's functionality was accessed through a command line prompt, providing users with a straightforward and efficient workflow for enhancing their images.\r\n\r\n",
+            "I developed an image manipulation program that offers a wide range of features, including mirroring, color inversion, grayscale conversion, and the creation of kaleidoscope effects. Leveraging the capabilities of C++ for fast user input handling, I integrated Python and OpenCV to execute these transformations. The program's functionality was accessed through a command line prompt, providing users with a straightforward and efficient workflow for enhancing their images.\r\n",
         languages: ['cpp', 'python'],
         tools: ['OpenCV'],
         date: undefined,
@@ -133,7 +148,7 @@ export const projects: Project[] = [
     {
         name: 'Enigma Recreation',
         description:
-            'As my first open-ended project during my Introduction to Programming course, I had the ambitious goal of recreating the WWII enciphering machine, Enigma, using Python. Despite being new to programming, I wanted to challenge myself.\n<br><br>\nThrough self-guided learning, I successfully developed a fully functional version of Enigma. Going beyond the original scope, I even added an additional feature that allowed for the translation of enciphered messages into Morse code. This project not only showcased my ability to tackle complex programming tasks but also demonstrated my dedication to expanding my skill set and exploring innovative solutions.',
+            'As my first open-ended project during my Introduction to Programming course, I had the ambitious goal of recreating the WWII enciphering machine, Enigma, using Python. Despite being new to programming, I wanted to challenge myself.\n\nThrough self-guided learning, I successfully developed a fully functional version of Enigma. Going beyond the original scope, I even added an additional feature that allowed for the translation of enciphered messages into Morse code. This project not only showcased my ability to tackle complex programming tasks but also demonstrated my dedication to expanding my skill set and exploring innovative solutions.',
         languages: ['python'],
         tools: [],
         date: '2020-01-01',
@@ -147,7 +162,7 @@ export const projects: Project[] = [
     {
         name: 'BlockDude Game Recreation',
         description:
-            'I recreated the game BlockDude, originally found on TI-84 calculators. The objective is to guide a block to the exit door across progressively challenging levels.\r\n<br><br>\r\nTo implement the game, I devised a map creation process. Using an Excel file, I assigned numerical values to each cell, representing different elements like bricks, movable blocks, the exit, and the starting position. This allowed for flexible map design without manual coding. Converting the file to CSV, I parsed it to construct a 2D vector of Block objects. Using class inheritance, I was able to assign each Block relevant properties such as location, type, direction, and carrying status. The grid structure facilitated efficient content checks and swapping operations.',
+            'I recreated the game BlockDude, originally found on TI-84 calculators. The objective is to guide a block to the exit door across progressively challenging levels.\r\nTo implement the game, I devised a map creation process. Using an Excel file, I assigned numerical values to each cell, representing different elements like bricks, movable blocks, the exit, and the starting position. This allowed for flexible map design without manual coding. Converting the file to CSV, I parsed it to construct a 2D vector of Block objects. Using class inheritance, I was able to assign each Block relevant properties such as location, type, direction, and carrying status. The grid structure facilitated efficient content checks and swapping operations.',
         languages: ['cpp'],
         tools: ['OpenGL', 'GLUT'],
         date: '2022-05-01',
@@ -232,3 +247,36 @@ export const Skills = {
         visible: false
     }
 } as const;
+
+export const defaultSettings: { [key in Mode]: Settings } = {
+    [Mode.FLOW]: {
+        delta: 0.00001,
+        angleRange: Math.PI * 2 * 1.5,
+        noiseDetail: 4,
+        falloff: 0.5,
+        explore: 4,
+        maxspeed: 8,
+        numParticles: 500,
+        color: [0, 255, 255, 10]
+    },
+    [Mode.PARTICLE]: {
+        delta: 0.00001,
+        angleRange: Math.PI * 2 * 1.5,
+        noiseDetail: 1,
+        falloff: 0.1,
+        explore: 0.25,
+        maxspeed: 4,
+        numParticles: 1000,
+        color: [0, 255, 255, 100]
+    },
+    [Mode.WAVE]: {
+        delta: 0.00001,
+        angleRange: Math.PI * 2 * 1.5,
+        noiseDetail: 1,
+        falloff: 0.1,
+        explore: 0.2,
+        maxspeed: 8,
+        numParticles: 500,
+        color: [0, 255, 255, 10]
+    }
+};

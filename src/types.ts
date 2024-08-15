@@ -29,3 +29,21 @@ export type Project = {
     caption: string;
     isVisible: boolean;
 };
+export enum Mode {
+    PARTICLE,
+    FLOW,
+    WAVE
+}
+
+export type Settings = {
+    delta: number; //small decimal
+    angleRange: number;
+    noiseDetail: number; //int
+    falloff: number; //decimal
+    explore: number; // 0-10 log
+    maxspeed: number;
+    numParticles: number;
+    color: number[];
+    rainbowMode?: boolean;
+    play?: boolean;
+};

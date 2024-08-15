@@ -1,7 +1,8 @@
-import { projects } from '../../store';
+import { projects, Skills } from '../../store';
 import { Project } from '../../types';
 import { Popup } from '../popup/popup';
 import { SectionHeader } from '../section-header/section-header';
+import { SkillIcon } from '../skills/skillIcon';
 import './projects.css';
 import { useState } from 'react';
 
@@ -18,12 +19,18 @@ export function Projects() {
                 <>
                     <h3>{project.name}</h3>
                     <div className="languages">
-                        {project.languages.map((language) => {
-                            return (
-                                <p className={'language ' + language}>
-                                    {language}
-                                </p>
-                            );
+                        {project.languages.map((language, key) => {
+                            console.log(language);
+                            return language in Skills ? (
+                                <SkillIcon
+                                    key={key}
+                                    skillKey={language}
+                                    skill={
+                                        Skills[language as keyof typeof Skills]
+                                    }
+                                    size={1}
+                                />
+                            ) : null;
                         })}
                     </div>
                     <p className="tools">{project.caption}</p>
@@ -73,16 +80,20 @@ export function Projects() {
                             >
                                 <h3>{project.name}</h3>
                                 <div className="languages">
-                                    {project.languages.map((language) => {
-                                        return (
-                                            <p
-                                                className={
-                                                    'language ' + language
+                                    {project.languages.map((language, key) => {
+                                        console.log(language);
+                                        return language in Skills ? (
+                                            <SkillIcon
+                                                key={key}
+                                                skillKey={language}
+                                                skill={
+                                                    Skills[
+                                                        language as keyof typeof Skills
+                                                    ]
                                                 }
-                                            >
-                                                {language}
-                                            </p>
-                                        );
+                                                size={1}
+                                            />
+                                        ) : null;
                                     })}
                                 </div>
                                 <p className="tools">{project.caption}</p>
