@@ -6,7 +6,7 @@ import { createTheme } from '@mui/material';
 
 export const projects: Project[] = [
     {
-        name: 'Midwest Road Useage Charge Pilot',
+        name: 'Midwest Road Usage Charge Pilot',
         description:
             'I worked with the Kansas and Minnesota Department of Transportation to create multiple web applications to help them implement their Road Usage Charge Pilot. The pilot program was designed to test the feasibility of a road usage charge as a replacement for the gas tax. The web applications I created were used to collect data from participants, provide information about the program, and help participants track their mileage and fuel consumption. I used TypeScript, React, and CSS to build the front-end of the applications and Azure functions for gathering and transforming data. I also used Python to create scripts to identify any outliers in the data that might indicate issues in the data collection process. ',
         languages: ['typescript', 'react', 'css', 'python'],
