@@ -8,7 +8,7 @@ export function SectionHeader({ title, description }: HeaderProps) {
     return (
         <div className="heading-container">
             <h2>{title}</h2>
-            <h3 className="hint">{description}</h3>
+            {description && <h3 className="hint">{description}</h3>}
         </div>
     );
 }

@@ -62,7 +62,10 @@ export function Projects() {
                                         ) : null;
                                     })}
                                 </div>
-                                <p className="tools">{project.caption}</p>
+                                <p className="caption">{project.caption}</p>
+                                <p className="description">
+                                    {project.description}
+                                </p>
                             </div>
                         )
                     );
