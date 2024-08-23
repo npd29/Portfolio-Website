@@ -9,7 +9,7 @@ export default function Banner() {
             <div className="banner">
                 <p>
                     <span>Note:</span> This site is still under constuction
-                    while transistioning from the{' '}
+                    while transitioning from the{' '}
                     <a href="https://ndesmara.w3.uvm.edu/portfolio/?id=new-site">
                         original
                     </a>
