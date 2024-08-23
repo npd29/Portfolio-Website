@@ -3,6 +3,8 @@ import close from '../../assets/images/close.svg';
 import { Project } from '../../types';
 import { Skills } from '../../store';
 import { SkillIcon } from '../skills/skillIcon';
+import { IconButton } from '@mui/material';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 interface PopupProps {
     project: Project;
     showPopup: (show: boolean) => void;
@@ -10,16 +12,16 @@ interface PopupProps {
 export function Popup({ project, showPopup }: PopupProps) {
     return (
         <>
-            {' '}
             <div className="overlay"></div>
             <div className="popup" id="popup">
                 <div className="popup-content">
-                    <img
-                        src={close}
-                        alt="close"
-                        className="popup-close"
+                    <IconButton
+                        aria-label="popup-close"
                         onClick={() => showPopup(false)}
-                    ></img>
+                    >
+                        <CloseRoundedIcon />
+                    </IconButton>
+
                     <h3>{project.name}</h3>
                     <div className="languages">
                         {project.languages.map((language, key) => {

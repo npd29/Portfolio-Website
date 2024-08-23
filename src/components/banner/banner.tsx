@@ -1,6 +1,6 @@
 import React from 'react';
 import './banner.scss';
-import { CloseIcon } from '../icons/close';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { Button } from '@mui/material';
 export default function Banner() {
     const [showBanner, setShowBannner] = React.useState(true);
@@ -16,7 +16,7 @@ export default function Banner() {
                     .
                 </p>
                 <Button onClick={() => setShowBannner(false)}>
-                    <CloseIcon color="#FFFFFF" />
+                    <CloseRoundedIcon />
                 </Button>
             </div>
         )

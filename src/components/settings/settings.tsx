@@ -4,7 +4,6 @@ import {
     Switch,
     IconButton,
     FormControl,
-    FormLabel,
     Radio,
     RadioGroup
 } from '@mui/material';
@@ -12,8 +11,7 @@ import TuneIcon from '@mui/icons-material/TuneRounded';
 import './settings.scss';
 import { useEffect, useState } from 'react';
 import { defaultSettings } from '../../store';
-import { CloseIcon } from '../icons/close';
-
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 interface SettingsProps {
     settings: Settings;
     updateSettings(settings: Settings): void;
@@ -47,15 +45,13 @@ export default function AnimationSettings({
 
             {showSettings && (
                 <div className="settings-popup">
-                    <div className="top">
-                        <h2>Settings</h2>
-                        <div
-                            className="close-settings"
-                            onClick={() => setShowSettings(!showSettings)}
-                        >
-                            <CloseIcon color="var(--white)"></CloseIcon>
-                        </div>
-                    </div>
+                    <h2>Settings</h2>
+                    <IconButton
+                        aria-label="close-settings"
+                        onClick={() => setShowSettings(!showSettings)}
+                    >
+                        <CloseRoundedIcon></CloseRoundedIcon>
+                    </IconButton>
 
                     <form>
                         <FormControlLabel
@@ -87,7 +83,7 @@ export default function AnimationSettings({
                                     <FormControlLabel
                                         key={key}
                                         value={key}
-                                        control={<Radio />}
+                                        control={<Radio className="radio" />}
                                         label={Mode[key as keyof typeof Mode]}
                                     />
                                 ))}
