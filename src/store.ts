@@ -169,7 +169,7 @@ export const projects: Project[] = [
         imageAddress: 'blockdude.jpg',
         finishedLink: undefined,
         caption:
-            'Rrecreated the game BlockDude, originally found on TI-84 calculators',
+            'Recreated the game BlockDude, originally found on TI-84 calculators',
         isVisible: true
     }
 ];
