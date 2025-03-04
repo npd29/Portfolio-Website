@@ -3,7 +3,7 @@ import './banner.scss';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { Button } from '@mui/material';
 export default function Banner() {
-    const [showBanner, setShowBannner] = React.useState(true);
+    const [showBanner, setShowBannner] = React.useState(false);
     return (
         showBanner && (
             <div className="banner">

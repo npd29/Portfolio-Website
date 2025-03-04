@@ -5,31 +5,43 @@ import {
     IconButton,
     FormControl,
     Radio,
-    RadioGroup
+    RadioGroup,
+    Button
 } from '@mui/material';
 import TuneIcon from '@mui/icons-material/TuneRounded';
 import './settings.scss';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { defaultSettings } from '../../store';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { SettingsContext } from '../../App';
 interface SettingsProps {
-    settings: Settings;
-    updateSettings(settings: Settings): void;
     mode: Mode;
     setMode(mode: Mode): void;
+    color: number[];
+    setClear(clear: boolean): void;
 }
 export default function AnimationSettings({
-    settings,
-    updateSettings,
     mode,
-    setMode
+    setMode,
+    color,
+    setClear
 }: SettingsProps) {
+    const context = useContext(SettingsContext);
+    if (!context) {
+        throw new Error(
+            'SettingsContext must be used within a SettingsProvider'
+        );
+    }
+    const { settings, setSettings } = context;
     const [showSettings, setShowSettings] = useState(false);
     const [rainbowMode, setRainbowMode] = useState(false);
     useEffect(() => {
-        updateSettings({
+        setClear(false);
+        setSettings({
             ...settings,
-            rainbowMode: rainbowMode
+            color: color,
+            rainbowMode: rainbowMode,
+            play: true
         });
     }, [rainbowMode]);
     return (
@@ -48,25 +60,26 @@ export default function AnimationSettings({
                     <h2>Settings</h2>
                     <IconButton
                         aria-label="close-settings"
+                        className="close-settings"
                         onClick={() => setShowSettings(!showSettings)}
                     >
                         <CloseRoundedIcon></CloseRoundedIcon>
                     </IconButton>
 
                     <form>
-                        <FormControlLabel
+                        {/* <FormControlLabel
                             label={'Color Loop'}
                             control={
-                                (
-                                    <Switch
-                                        onClick={() => {
-                                            setRainbowMode(!rainbowMode);
-                                        }}
-                                        checked={rainbowMode}
-                                    ></Switch>
+                                (<></>
+                                    // <Switch
+                                    //     onClick={() => {
+                                    //         setRainbowMode(!rainbowMode);
+                                    //     }}
+                                    //     checked={rainbowMode}
+                                    // ></Switch>
                                 ) ?? <></>
                             }
-                        ></FormControlLabel>
+                        ></FormControlLabel> */}
                         <FormControl className="modes">
                             Mode
                             <RadioGroup
@@ -89,6 +102,14 @@ export default function AnimationSettings({
                                 ))}
                             </RadioGroup>
                         </FormControl>
+                        <Button
+                            onClick={() => {
+                                console.log('pressed');
+                                setClear(true);
+                            }}
+                        >
+                            Clear
+                        </Button>
                     </form>
                     <p>More controls coming soon...</p>
                 </div>

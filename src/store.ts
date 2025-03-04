@@ -1,5 +1,5 @@
 import { LazyExoticComponent, ReactComponentElement } from 'react';
-import { Project, SkillProps, Skill, Mode, Settings } from './types';
+import { Project, SkillProps, Skill, Mode, Settings, CaseStudy } from './types';
 import React, { lazy, Suspense } from 'react';
 import { purple } from '@mui/material/colors';
 import { createTheme } from '@mui/material';
@@ -8,10 +8,9 @@ export const projects: Project[] = [
     {
         name: 'Midwest Road Usage Charge Pilot',
         description:
-            'I worked with the Kansas and Minnesota Department of Transportation to create multiple web applications to help them implement their Road Usage Charge Pilot. The pilot program was designed to test the feasibility of a road usage charge as a replacement for the gas tax. The web applications I created were used to collect data from participants, provide information about the program, and help participants track their mileage and fuel consumption. I used TypeScript, React, and CSS to build the front-end of the applications and Azure functions for gathering and transforming data. I also used Python to create scripts to identify any outliers in the data that might indicate issues in the data collection process. ',
+            'The Kansas and Minnesota Departments of Transportation initiated a Road Usage Charge Pilot to explore the feasibility of replacing the gas tax with a road usage charge. The goal was to develop web applications that would facilitate data collection, provide program information, and help participants track their mileage and fuel consumption.',
         languages: ['typescript', 'react', 'css', 'python'],
-        date: undefined,
-        imageAddress: undefined,
+        date: '',
         finishedLink:
             'https://summary.midwestruc.net/?id=b7ca53ef-8fbf-492f-b68c-c3a228fa22ed',
         caption:
@@ -250,33 +249,33 @@ export const Skills = {
 
 export const defaultSettings: { [key in Mode]: Settings } = {
     [Mode.FLOW]: {
-        delta: 0.00001,
+        delta: 0.0002,
         angleRange: Math.PI * 2 * 1.5,
-        noiseDetail: 4,
-        falloff: 0.5,
-        explore: 4,
-        maxspeed: 8,
+        noiseDetail: 3,
+        falloff: 0.1,
+        followFactor: 0.5,
+        maxspeed: 4,
         numParticles: 500,
-        color: [0, 255, 255, 10]
+        opacity: 10
     },
     [Mode.PARTICLE]: {
         delta: 0.00001,
         angleRange: Math.PI * 2 * 1.5,
         noiseDetail: 1,
         falloff: 0.1,
-        explore: 0.25,
-        maxspeed: 4,
+        followFactor: 0.25,
+        maxspeed: 2,
         numParticles: 1000,
-        color: [0, 255, 255, 100]
+        opacity: 5
     },
     [Mode.WAVE]: {
         delta: 0.00001,
         angleRange: Math.PI * 2 * 1.5,
         noiseDetail: 1,
         falloff: 0.1,
-        explore: 0.2,
+        followFactor: 0.2,
         maxspeed: 8,
         numParticles: 500,
-        color: [0, 255, 255, 10]
+        opacity: 5
     }
 };

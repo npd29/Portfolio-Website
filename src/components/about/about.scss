@@ -1,0 +1,117 @@
+.container {
+    display: flex;
+    height: 100dvh;
+    padding: 1em;
+    position: sticky;
+    scroll-snap-align: start;
+    scroll-margin-top: 0px; /* Adjust if you have a fixed header */
+    scroll-snap-margin-top: 0px;
+}
+
+.about-section {
+    margin: 1em 0;
+    padding: 2em;
+    flex: 1;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background: linear-gradient(
+        130deg,
+        rgba(0, 255, 255, 0.7) 0%,
+        rgba(255, 0, 255, 0.7) 100%
+    );
+    h2 {
+        margin: 0;
+        opacity: 25%;
+        color: var(--grey);
+    }
+}
+.about-container {
+    display: flex;
+    overflow: scroll;
+    padding-top: 2em;
+    gap: 3em;
+    align-items: flex-start;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        gap: 2em;
+    }
+}
+
+.about-text {
+    flex: 3;
+
+    p {
+        line-height: 1.5;
+        color: var(--grey);
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    a {
+        font-family: 'JetBrains Mono';
+        color: var(--ltblue);
+        text-decoration: none;
+        border-bottom: 1px solid var(--ltblue);
+        padding-bottom: 2px;
+        transition: color 0.3s ease, border-color 0.3s ease;
+
+        &:hover {
+            color: var(--teal);
+            border-color: var(--teal);
+        }
+    }
+}
+
+.image-container {
+    flex: 2;
+    max-width: 400px;
+
+    @media screen and (max-width: 768px) {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            135deg,
+            rgba(0, 255, 255, 0.2) 0%,
+            rgba(0, 255, 150, 0.2) 100%
+        );
+        z-index: 1;
+    }
+
+    img {
+        width: 100%;
+        display: block;
+        transition: transform 0.5s ease;
+
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
+}
+
+.image-caption {
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: 1.2em;
+    color: var(--grey);
+    opacity: 0.8;
+    font-family: 'JetBrains Italic', sans-serif;
+}

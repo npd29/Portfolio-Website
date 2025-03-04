@@ -36,14 +36,32 @@ export enum Mode {
 }
 
 export type Settings = {
+    /** How quickly the angles shoudl change */
     delta: number; //small decimal
+
     angleRange: number;
+
     noiseDetail: number; //int
+    /** 0-1 number. Finer detail related to noise */
     falloff: number; //decimal
-    explore: number; // 0-10 log
+    followFactor: number; // 0-10 log
     maxspeed: number;
     numParticles: number;
-    color: number[];
+    opacity: number;
     rainbowMode?: boolean;
+    color?: number[];
     play?: boolean;
+};
+export type CaseStudy = {
+    name: string;
+    client: string;
+    overview: string;
+    myRole: string;
+    impact: string;
+    languages: (keyof typeof Skills)[];
+    date: string;
+    images: string[];
+    finishedLink: string;
+    caption: string;
+    isVisible: boolean;
 };

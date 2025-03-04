@@ -3,9 +3,10 @@ import { SketchProps } from 'react-p5-wrapper';
 import { scl, numParticles, inc, rainbowMode } from './constants';
 import './utilities';
 import { P5CanvasInstance } from '@p5-wrapper/react';
-import { Signal, signal } from '@preact/signals';
 import { Mode, Settings } from '../../types';
 import { defaultSettings } from '../../store';
+import { Vector } from 'p5';
+type FlowVector = { x: number; y: number };
 
 type MySketchProps = SketchProps & {
     mode: Mode;
@@ -19,20 +20,16 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
     let width = window.innerWidth;
     let height = window.innerHeight;
     let z = 1;
-    let delta = 0.00001; //lower results in vectors being more consistant
     let rows: number, cols: number;
-    let flowfield: any[] = [];
+    let flowfield: Vector[] = [];
     let rainbowMode = true;
-    let particles: any[] = [];
+    let particles: Particle[] = [];
     let zoff = 0;
-    let delayPassed = false;
-    let explore = 4; // higher will result in particles following less
-    let angleRange = Math.PI * 2 * 1.5;
     let myMode = Mode.FLOW;
-    let opacity = 100;
+    let opacity = 5;
     let myColor = [0, 255, 255, opacity];
-    let dontDraw = true;
     let colorDelta = 1;
+    let resizeTimeout: any;
 
     function changeColor() {
         if (rainbowMode) {
@@ -40,7 +37,7 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
                 (myColor[0] += colorDelta),
                 (myColor[1] -= colorDelta),
                 myColor[2],
-                settings.color[3]
+                settings.color![3]
             ];
             if (myColor[0] >= 255) {
                 colorDelta = -1;
@@ -54,7 +51,7 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
         settings = props.settings;
         play = settings.play ?? true;
         rainbowMode = settings.rainbowMode ?? false;
-        myColor[3] = settings.color[3];
+        myColor[3] = settings.opacity;
         myMode == Mode.FLOW && setInterval(loopZ, 30000); // bounce every 30 seconds
         rainbowMode && setInterval(changeColor, 250);
         setTimeout(() => {
@@ -71,7 +68,50 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
     function loopZ() {
         z *= -1;
     }
+    function initializeFlowfield() {
+        flowfield = Array.from({ length: cols * rows }, () =>
+            p5.createVector(0, 0)
+        );
+    }
 
+    function initializeParticles(): Particle[] {
+        const particleCount =
+            width < 600 ? Math.floor(numParticles / 3) : numParticles;
+        const particles: Particle[] = [];
+
+        for (let i = 0; i < particleCount; i++) {
+            const x = p5.random(width);
+            const y = p5.random(height);
+
+            const particle = new Particle(
+                p5,
+                myColor,
+                settings.maxspeed,
+                width,
+                height,
+                rows,
+                cols,
+                x,
+                y
+            );
+
+            // Initialize with a small random velocity
+            particle.vel = p5.createVector(p5.random(-1, 1), p5.random(-1, 1));
+            particle.vel.setMag(p5.random(0.1, settings.maxspeed));
+
+            particles.push(particle);
+        }
+
+        return particles;
+    }
+    // Function to clear the canvas
+    function clearCanvas() {
+        p5.background('#222');
+        particles = initializeParticles();
+    }
+
+    // Set a timer to clear the canvas after 5 minutes
+    setTimeout(clearCanvas, 300000);
     p5.setup = () => {
         width = p5.windowWidth;
         height = p5.windowHeight;
@@ -79,28 +119,12 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
         p5.pixelDensity(1);
         cols = Math.floor(width / scl);
         rows = Math.floor(height / scl);
-        flowfield = new Array(cols * rows);
+        initializeFlowfield();
         particles = [];
         p5.background('#222');
         p5.noiseDetail(settings.noiseDetail, settings.falloff);
 
-        for (let x = 0; x < numParticles; x++) {
-            const xVal = Math.random() * width;
-            const yVal = Math.random() * height;
-            particles.push(
-                new Particle(
-                    p5,
-                    myColor,
-                    settings.maxspeed,
-                    width,
-                    height,
-                    rows,
-                    cols,
-                    xVal,
-                    yVal
-                )
-            );
-        }
+        particles = initializeParticles();
 
         // setTimeout(() => {
         //     delayPassed = true;
@@ -109,37 +133,68 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
 
     p5.draw = () => {
         if (play && window.scrollY < window.innerHeight) {
-            myMode == Mode.PARTICLE && p5.background('#222');
+            if (myMode === Mode.PARTICLE) {
+                p5.background('#222');
+            }
 
-            let xoff = 0;
-            let yoff = 0;
-            for (let y = 0; y < rows; y++) {
-                xoff = 0;
-                for (let x = 0; x < cols; x++) {
-                    const index = x + y * cols;
-                    const angle =
-                        p5.noise(xoff, yoff, zoff) * settings.angleRange;
-                    const v = p5.createVector(Math.cos(angle), Math.sin(angle));
-                    v.setMag(settings.explore);
-                    flowfield[index] = v;
-                    xoff += inc;
-                }
-                yoff += inc;
-                zoff += z * settings.delta;
-            }
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].follow(flowfield);
-                particles[i].update();
-                particles[i].edges();
-                myMode == Mode.PARTICLE
-                    ? particles[i].showParticle(myColor)
-                    : particles[i].show(myColor);
-            }
+            updateFlowfield();
+            updateParticles();
         }
     };
 
+    function updateFlowfield() {
+        let xoff = 0;
+        let yoff = 0;
+
+        for (let y = 0; y < rows; y++) {
+            xoff = 0;
+            for (let x = 0; x < cols; x++) {
+                const index = x + y * cols;
+                const angle =
+                    p5.noise(xoff, yoff, zoff) * (settings.angleRange ?? 1);
+                const v = p5.createVector(Math.cos(angle), Math.sin(angle));
+                v.setMag(settings.followFactor);
+                flowfield[index] = v;
+                xoff += inc;
+            }
+            yoff += inc;
+        }
+
+        zoff += z * settings.delta;
+    }
+
+    function updateParticles() {
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].follow(flowfield);
+            particles[i].update();
+            particles[i].edges();
+
+            if (myMode === Mode.PARTICLE) {
+                particles[i].showParticle(myColor);
+            } else {
+                particles[i].show(myColor);
+            }
+        }
+    }
+
     // Initialize the setup function on window resize
-    if (window.screen.width > 780) {
-        window.onresize = p5.setup;
+    window.onresize = () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            handleResize();
+        }, 250); // Adjust debounce delay as needed
+    };
+
+    function handleResize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        p5.resizeCanvas(width, height);
+
+        cols = Math.floor(width / scl);
+        rows = Math.floor(height / scl);
+
+        initializeFlowfield();
+        particles = initializeParticles();
     }
 }

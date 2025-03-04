@@ -16,7 +16,6 @@ export var numParticles = 500;
 export var delta = 1;
 export var stopAnimation = false;
 export let particleOpacity = 255;
-export let flowOpacity = 10;
 // export var rainbowInterval;
 // Add event listeners to the radio buttons
 // const particleRadio = document.getElementById('particleRadio');

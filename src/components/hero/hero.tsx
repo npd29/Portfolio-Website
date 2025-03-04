@@ -5,36 +5,52 @@ import { ReactP5Wrapper } from 'react-p5-wrapper';
 import { flow } from './flowfield';
 import { Mode, Settings } from '../../types';
 import { defaultSettings } from '../../store';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AnimationSettings from '../settings/settings';
+import { SettingsContext } from '../../App';
 
 export function Hero() {
-    const [animationMode, setAnimationMode] = useState<Mode>(Mode.FLOW);
-    const [currentSettings, setCurrentSettings] = useState<Settings>(
-        defaultSettings[animationMode]
-    );
-    useEffect(() => {
-        setCurrentSettings((prevSettings) => ({
-            ...prevSettings,
-            rainbowMode: false,
-            play: true
-        }));
-    }, []);
-    useEffect(() => {
-        setCurrentSettings(() => ({
-            ...defaultSettings[animationMode],
-            play: true,
-            rainbowMode: currentSettings.rainbowMode
-        }));
-    }, [animationMode]);
+    const context = useContext(SettingsContext);
+    if (!context) {
+        throw new Error(
+            'SettingsContext must be used within a SettingsProvider'
+        );
+    }
+    const { settings, setSettings } = context;
+    // const [currentSettings, setCurrentSettings] = useState<Settings>({
+    //     ...defaultSettings[Mode.FLOW],
+    //     color: [0, 255, 255],
+    //     rainbowMode: false,
+    //     play: true
+    // });
+    const [currentColor, setCurrentColor] = useState<number[]>([
+        0, 255, 255, 5
+    ]);
+    // useEffect(() => {
+    //     console.log('test');
+    //     setClearCanvas(false);
+    //     setCurrentSettings((prevSettings) => ({
+    //         ...prevSettings,
+    //         color: currentColor,
+    //         rainbowMode: false,
+    //         play: true
+    //     }));
+    // }, []);
+    // useEffect(() => {
+    //     setClearCanvas(true);
+    //     setCurrentSettings(() => ({
+    //         ...defaultSettings[animationMode],
+    //         color: currentColor,
+    //         play: true,
+    //         rainbowMode: currentSettings.rainbowMode
+    //     }));
+    // }, [animationMode]);
+    // useEffect(() => {
+    //     console.log('cleared');
+    // }, [clearCanvas]);
 
     return (
         <div className="hero">
-            <ReactP5Wrapper
-                sketch={flow}
-                mode={animationMode}
-                settings={currentSettings}
-            ></ReactP5Wrapper>
             <div id="homeDisplay" className="home">
                 <div id="framerate">
                     <p id="fr"></p>
@@ -45,12 +61,12 @@ export function Hero() {
                     <h2>Full Stack Software Developer</h2>
                 </div>
             </div>
-            <AnimationSettings
-                settings={currentSettings}
-                updateSettings={setCurrentSettings}
+            {/* <AnimationSettings
                 mode={animationMode}
+                color={currentColor}
                 setMode={setAnimationMode}
-            ></AnimationSettings>
+                setClear={setClearCanvas}
+            ></AnimationSettings> */}
         </div>
     );
 }
