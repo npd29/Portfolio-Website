@@ -132,14 +132,12 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
     };
 
     p5.draw = () => {
-        if (play && window.scrollY < window.innerHeight) {
-            if (myMode === Mode.PARTICLE) {
-                p5.background('#222');
-            }
-
-            updateFlowfield();
-            updateParticles();
+        if (myMode === Mode.PARTICLE) {
+            p5.background('#222');
         }
+
+        updateFlowfield();
+        updateParticles();
     };
 
     function updateFlowfield() {
