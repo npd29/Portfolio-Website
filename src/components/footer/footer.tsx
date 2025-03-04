@@ -5,7 +5,7 @@ export function Footer() {
         <div className="footer">
             <div className="footerContent">
                 <p>Noel Desmarais</p>
-                <p>December 2024</p>
+                <p>March 2025</p>
             </div>
         </div>
     );

@@ -186,6 +186,7 @@ export function flow(p5: P5CanvasInstance<MySketchProps>) {
     };
 
     function handleResize() {
+        if (window.innerWidth < 900) return;
         width = window.innerWidth;
         height = window.innerHeight;
 

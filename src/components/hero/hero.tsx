@@ -58,7 +58,7 @@ export function Hero() {
                 <img className="logo" src={logo} alt="Noel Desmarais' Logo" />
                 <div className="name">
                     <h1>NOEL DESMARAIS</h1>
-                    <h2>Full Stack Software Developer</h2>
+                    <h2>Full-Stack Software Developer</h2>
                 </div>
             </div>
             {/* <AnimationSettings

@@ -121,7 +121,7 @@
     gap: 0.5em;
 }
 .tools {
-    font-family: 'JetBrains Italic';
+    font-family: 'Rajdhani';
     font-size: small;
     margin-top: auto;
     opacity: 70%;
@@ -211,7 +211,7 @@
 }
 
 .project-section > p {
-    font-family: 'JetBrains Italic';
+    font-family: 'Rajdhani';
     font-size: smaller;
     opacity: 50%;
     margin-left: 5em;
