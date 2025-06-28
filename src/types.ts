@@ -17,6 +17,9 @@ export type Skill = {
     importance: number;
     visible: boolean;
 };
+
+export type ProjectCategory = 'web' | 'cloud' | 'ai' | 'embedded';
+
 export type Project = {
     name: string;
     description: string;
@@ -28,6 +31,9 @@ export type Project = {
     finishedLink?: string;
     caption: string;
     isVisible: boolean;
+    categories: ProjectCategory[];
+    isFeatured: boolean;
+    inDevelopment: boolean;
 };
 export enum Mode {
     PARTICLE,

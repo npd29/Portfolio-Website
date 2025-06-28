@@ -15,7 +15,10 @@ export const projects: Project[] = [
             'https://summary.midwestruc.net/?id=b7ca53ef-8fbf-492f-b68c-c3a228fa22ed',
         caption:
             'Created multiple web apps to help the Kansas Department of Transportation implement their Road Usage Charge Pilot.',
-        isVisible: true
+        isVisible: true,
+        categories: ['web', 'cloud'],
+        isFeatured: true,
+        inDevelopment: false
     },
     {
         name: 'TidByt-Inspired LED Matrix',
@@ -29,7 +32,10 @@ export const projects: Project[] = [
         finishedLink: undefined,
         caption:
             'Recreated a product using an LED Matrix and a Raspberry Pi Pico.',
-        isVisible: true
+        isVisible: true,
+        categories: ['embedded', 'cloud'],
+        isFeatured: true,
+        inDevelopment: true
     },
     {
         name: 'Fall Prevention Education iOS Application',
@@ -43,7 +49,10 @@ export const projects: Project[] = [
         finishedLink: undefined,
         caption:
             'Created an iOS application for the University of Vermont Medical Center to educate fall-prone individuals. ',
-        isVisible: true
+        isVisible: true,
+        categories: ['ai'],
+        isFeatured: false,
+        inDevelopment: false
     },
     {
         name: 'RNTR - Apartment Rating Website',
@@ -57,7 +66,10 @@ export const projects: Project[] = [
         finishedLink: undefined,
         caption:
             'Created a platform that allowed renters to review their landlords and apartments to increase transparency in the rental market.',
-        isVisible: true
+        isVisible: true,
+        categories: ['web', 'cloud'],
+        isFeatured: false,
+        inDevelopment: false
     },
     {
         name: 'SG-FECC 2023 Website',
@@ -71,7 +83,10 @@ export const projects: Project[] = [
         finishedLink: 'https://site.uvm.edu/sgfecc/',
         caption:
             'Redesigned and implemented an SEO-optimized website, resulting in an estimated 300% increase in page-visits.',
-        isVisible: true
+        isVisible: true,
+        categories: ['web'],
+        isFeatured: false,
+        inDevelopment: false
     },
     {
         name: 'Evolutionary Robotics Simulated Robot',
@@ -85,7 +100,10 @@ export const projects: Project[] = [
         finishedLink: undefined,
         caption:
             'Optimized a simulated robot for locomotion in diverse environments using evolutionary algorithms.',
-        isVisible: true
+        isVisible: true,
+        categories: ['ai'],
+        isFeatured: false,
+        inDevelopment: false
     },
     {
         name: 'Custom Compiler',
@@ -99,7 +117,10 @@ export const projects: Project[] = [
         finishedLink: undefined,
         caption:
             'Developed a simple compiler enabling translation of high-level programming language into x86 assembly language',
-        isVisible: true
+        isVisible: true,
+        categories: ['ai'],
+        isFeatured: false,
+        inDevelopment: false
     },
     {
         name: 'Automated Plant Care System',
@@ -113,7 +134,10 @@ export const projects: Project[] = [
         finishedLink: undefined,
         caption:
             'Using Arduinos, sensors, and pumps connected via Bluetooth, created a device to keep plants watered and fertilized. ',
-        isVisible: true
+        isVisible: true,
+        categories: ['embedded', 'cloud'],
+        isFeatured: false,
+        inDevelopment: false
     },
     {
         name: 'Plants vs. Zombies Recreation',
@@ -128,7 +152,10 @@ export const projects: Project[] = [
         finishedLink: undefined,
         caption:
             'Collaborated with a small team to recreate the game Plants vs. Zombies',
-        isVisible: true
+        isVisible: true,
+        categories: ['ai'],
+        isFeatured: false,
+        inDevelopment: false
     },
     {
         name: 'Image Manipulation Program',
@@ -142,7 +169,10 @@ export const projects: Project[] = [
         finishedLink: undefined,
         caption:
             'Developed an image manipulation program with a wide range of features, including mirroring, color inversion, grayscale conversion, and the creation of kaleidoscope effects.',
-        isVisible: true
+        isVisible: true,
+        categories: ['embedded', 'ai'],
+        isFeatured: false,
+        inDevelopment: false
     },
     {
         name: 'Enigma Recreation',
@@ -156,7 +186,10 @@ export const projects: Project[] = [
         finishedLink: undefined,
         caption:
             'Developed a fully-functional version of the WWII German encyphering machine Enigma in Python.',
-        isVisible: true
+        isVisible: true,
+        categories: ['ai'],
+        isFeatured: false,
+        inDevelopment: false
     },
     {
         name: 'BlockDude Game Recreation',
@@ -170,7 +203,25 @@ export const projects: Project[] = [
         finishedLink: undefined,
         caption:
             'Recreated the game BlockDude, originally found on TI-84 calculators',
-        isVisible: true
+        isVisible: true,
+        categories: ['embedded'],
+        isFeatured: false,
+        inDevelopment: false
+    },
+    {
+        name: 'Kairos',
+        description:
+            'Kairos is an AI-powered weekly planner that intelligently breaks down your high-level goals into actionable calendar events. It leverages a multi-agent orchestration system—comprising fitness, nutrition, and scheduling agents—to generate personalized plans based on your preferences, constraints, and historical data. The front end is built with Next.js and Tailwind CSS for a responsive, glass-like UI, while the FastAPI backend handles agent coordination, RAG-based context retrieval, and integration with Google Calendar. Dockerized and deployed on Google Cloud Run, Kairos uses PostgreSQL with pgvector embeddings to store user profiles and plan references, ensuring scalable, secure, and privacy-focused time management automation.',
+        languages: ['typescript', 'react', 'python', 'css'],
+        tools: ['FastAPI', 'Docker', 'Google Cloud', 'GitHub Actions'],
+        date: undefined,
+        finishedLink: undefined,
+        caption:
+            'Built a multi-agent AI planner that breaks down high-level goals into actionable calendar events.',
+        isVisible: true,
+        categories: ['ai', 'web', 'cloud'],
+        isFeatured: true,
+        inDevelopment: true
     }
 ];
 

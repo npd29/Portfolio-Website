@@ -11,16 +11,27 @@
     .home {
         display: flex;
         flex-direction: column;
+        margin: auto;
         .name {
             display: flex;
             flex-direction: column;
             bottom: 20vh;
+
+            /* Prevent layout shift and add fade-in */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+
             h1 {
                 letter-spacing: 0.3em;
                 margin: auto;
                 font-size: 4em;
                 text-shadow: var(--grey) 0 0 0.5em;
                 text-align: center;
+                /* Prevent font loading shift */
+                font-display: swap;
+                /* Reserve space to prevent shift */
+                min-height: 1.2em;
             }
             h2 {
                 margin: auto;
@@ -35,11 +46,20 @@
                 font-family: 'Rajdhani';
                 text-transform: uppercase;
                 font-weight: 800;
+                /* Reserve space to prevent shift */
+                min-height: 1.2em;
             }
         }
         .logo {
             height: 30vh;
             margin: 20vh auto 15vh;
+            /* Prevent layout shift and add fade-in */
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeInScale 1s ease-out 0.3s forwards;
+            /* Reserve space immediately */
+            width: auto;
+            max-width: 300px;
         }
         #homeDisplay {
             display: flex;
@@ -48,6 +68,41 @@
         }
     }
 }
+
+/* Fade-in animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Preload fonts to prevent layout shift */
+@font-face {
+    font-family: 'Integral CF';
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    font-display: swap;
+}
+
 canvas {
     position: absolute;
     top: 0;
@@ -61,7 +116,20 @@ canvas {
     left: 1em;
     opacity: 0.5;
     display: flex;
+    /* Fade in framerate */
+    animation: fadeIn 0.5s ease-out 1.5s forwards;
+    opacity: 0;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
 #fr {
     font-family: 'Integral CF';
 }
@@ -71,30 +139,158 @@ canvas {
     bottom: 2em;
     right: 2em;
     cursor: pointer;
+    /* Fade in gear icon */
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out 1.2s forwards;
 }
+
 .gear-icon img {
     width: 2em;
-    opacity: 0.8;
 }
-@media screen and (max-width: 768px) {
+
+/* Enhanced Mobile Responsive Design */
+@media screen and (max-width: 900px) {
     .hero {
-        height: calc(100vh - 0.5em);
         .home {
             .name {
                 h1 {
-                    font-size: 2.5em;
-                    letter-spacing: 0.1em;
+                    font-size: 3.2em;
+                    letter-spacing: 0.15em;
+                    line-height: 1.1;
                 }
                 h2 {
-                    font-size: 1em;
-                    letter-spacing: 0.1em;
-                    margin: 0;
+                    font-size: 1.1em;
+                    letter-spacing: 0.4em;
+                    margin-top: 0.8em;
                 }
             }
             .logo {
-                // height: 20vh;
-                // margin: 15vh auto 10vh;
+                height: 25vh;
+                max-width: 280px;
+                margin: 15vh auto 10vh;
             }
         }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        .home {
+            .logo {
+                height: 22vh;
+                max-width: 260px;
+                margin: 12vh auto 8vh;
+                /* Mobile logo with fade-in and float */
+                animation: mobileLogoFadeFloat 1s ease-out 0.3s forwards;
+            }
+
+            .name {
+                h1 {
+                    font-size: clamp(2.2em, 8vw, 3em);
+                    letter-spacing: clamp(0.05em, 2vw, 0.2em);
+                    line-height: 1.1;
+                    margin-bottom: 0.3em;
+                    /* Keep original styling - no gradient changes */
+                }
+
+                h2 {
+                    font-size: clamp(1.1em, 4.5vw, 1.4em);
+                    letter-spacing: clamp(0.1em, 1vw, 0.6em);
+                    margin-top: 0;
+                    /* Simplified mobile styling for better readability */
+                    color: #fff;
+                    opacity: 0.9;
+                    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+                }
+            }
+
+            #homeDisplay {
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    /* Mobile-specific framerate positioning */
+    #framerate {
+        bottom: 0.5em;
+        left: 0.5em;
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero {
+        .home {
+            .logo {
+                height: 18vh;
+                max-width: 200px;
+                margin: 8vh auto 6vh;
+            }
+
+            .name {
+                h1 {
+                    font-size: clamp(1.8em, 9vw, 2.5em);
+                    letter-spacing: clamp(0.02em, 1.5vw, 0.1em);
+                    margin-bottom: 0.5em;
+                }
+
+                h2 {
+                    font-size: clamp(0.9em, 4vw, 1.2em);
+                    letter-spacing: clamp(0.05em, 1vw, 0.3em);
+                    margin-top: 0;
+                    /* Simplified mobile styling for better readability */
+                    color: #fff;
+                    opacity: 0.9;
+                    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .hero {
+        .home {
+            .logo {
+                height: 15vh;
+                max-width: 160px;
+                margin: 6vh auto 4vh;
+            }
+
+            .name {
+                h1 {
+                    font-size: 1.6em;
+                    letter-spacing: 0.02em;
+                }
+
+                h2 {
+                    font-size: 0.9em;
+                    letter-spacing: 0.05em;
+                    /* Simplified mobile styling for better readability */
+                    color: #fff;
+                    opacity: 0.9;
+                    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+                }
+            }
+        }
+    }
+}
+
+/* Mobile logo animation with fade-in */
+@keyframes mobileLogoFadeFloat {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0px);
     }
 }
